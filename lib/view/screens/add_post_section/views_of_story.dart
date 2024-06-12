@@ -6,14 +6,14 @@ import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 
 import '../../../controller/custom_widgets/constant.dart';
 import '../../../controller/custom_widgets/my_color.dart';
-class LikeScreen extends StatefulWidget {
-  const LikeScreen({Key? key}) : super(key: key);
+class ViewsStoryScreen extends StatefulWidget {
+  const ViewsStoryScreen({Key? key}) : super(key: key);
 
   @override
-  State<LikeScreen> createState() => _LikeScreenState();
+  State<ViewsStoryScreen> createState() => _ViewsStoryScreenState();
 }
 
-class _LikeScreenState extends State<LikeScreen> {
+class _ViewsStoryScreenState extends State<ViewsStoryScreen> {
   List<String> data=[
     "assets/png/profile.png",
     "assets/png/profile2.png",
@@ -38,40 +38,44 @@ class _LikeScreenState extends State<LikeScreen> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold( backgroundColor: Colors.white,
+    return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            GestureDetector(onTap: () {
-              Get.back();
-            },
-                child: Icon(Icons.arrow_back_ios_new, size: 18.px)),
-            Text("Likes", style: Constant.textLikes),
-            SizedBox(height: 10, width: 10)
+
+            Text("Story Views", style: Constant.textLikes.copyWith(fontSize: 13.px,color: const Color(0xff000E08))),
+            Text("2k", style: Constant.textLikes.copyWith(fontSize: 13.px,color: const Color(0xff000E08))),
           ],
         ),
       ),
       body: Padding(
         padding:  EdgeInsets.symmetric(horizontal: 3.h),
         child: Column(children: [
-          Row(mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset("assets/svg/heart.svg"),
-              getHorizontalSpace(.4.w),
-              Text("100"),
-            ],
-          ),
           Expanded(
             child: ListView.builder(
-              itemCount: data.length,
+              padding: EdgeInsets.zero,
+                itemCount: data.length,
                 itemBuilder: (context,index){return
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 3.w),
-                child: Column(
-                  children: [
-                    Row(
+                  Container(padding: EdgeInsets.symmetric(
+                    horizontal: .8.h,
+                    vertical: .8.h
+                  ),
+                    margin: EdgeInsets.symmetric(vertical: 1.h),
+                    decoration: BoxDecoration(
+                      color: const Color(0xffFFFFFF),
+                      boxShadow: [
+                        BoxShadow(color: const Color(0xff000000).withOpacity(0.1),
+                        offset: const Offset(1, 1),
+                        spreadRadius: 0,
+                        blurRadius: 7.8.px),
+
+
+                      ],
+                      borderRadius: BorderRadius.circular(1.4.h)
+                    ),
+                    child: Row(
                       children: [
                         CircleAvatar(
                           backgroundImage: AssetImage(data[index]),
@@ -82,11 +86,8 @@ class _LikeScreenState extends State<LikeScreen> {
                             child: TextFormField(decoration: InputDecoration.collapsed(hintText: data1[index]),style: Constant.textLikeName,))
                       ],
                     ),
-                    Divider(color: MyColor.dividerColor),
-                  ],
-                ),
-              );
-            }),
+                  );
+                }),
           ),
 
         ],),

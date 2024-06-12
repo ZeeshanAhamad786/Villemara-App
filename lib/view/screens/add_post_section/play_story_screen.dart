@@ -1,11 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:story_view/controller/story_controller.dart';
 import 'package:story_view/utils.dart';
 import 'package:story_view/widgets/story_view.dart';
 import 'package:villemara_app/controller/custom_widgets/constant.dart';
 import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
+import 'package:villemara_app/view/screens/add_post_section/views_of_story.dart';
 
 class PlayStoryScreen extends StatelessWidget {
   PlayStoryScreen({super.key});
@@ -36,24 +39,42 @@ class PlayStoryScreen extends StatelessWidget {
         Positioned(
           top: 7.5.h,
           left: 2.h,
+          right: 2.h,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
                   CircleAvatar(
-                    radius: 3.h,
+                    radius: 2.5.h,
+                    backgroundImage: const AssetImage('assets/png/profile.png'),
                   ),
                   getHorizontalSpace(2.h),
-                   Text('Kevin.J',style: Constant.headingText.copyWith(color: const Color(0xffFFFFFF)),),
+                  Text(
+                    'Kevin.J',
+                    style: Constant.headingText
+                        .copyWith(color: const Color(0xffFFFFFF)),
+                  ),
+                  getHorizontalSpace(1.h),
+                  Text(
+                    '18h',
+                    style: Constant.headingText
+                        .copyWith(color: const Color(0xffFFFFFF)),
+                  ),
                 ],
               ),
-              getHorizontalSpace(20.4.h),
               Row(
                 children: [
-                  SvgPicture.asset('assets/svg/delete.svg'),
+                  GestureDetector(
+                      onTap: () {
+                        showAlertDialog(context);
+                      },
+                      child: SvgPicture.asset('assets/svg/delete.svg')),
                   getHorizontalSpace(3.h),
-                  SvgPicture.asset('assets/svg/cros.svg'),
+                  GestureDetector(onTap: (){
+                    Get.back();
+                  },
+                      child: SvgPicture.asset('assets/svg/cros.svg')),
                 ],
               )
             ],
@@ -62,43 +83,165 @@ class PlayStoryScreen extends StatelessWidget {
         Positioned(
           bottom: 3.9.h,
           left: 2.5.h,
+          right: 2.5.h,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
                 children: [
-                  SizedBox(width: 35.2.h,
-                      child: Text("@Sam Smith Lorem ipsum dolor sit amet consectetur. Eget aliquam suspendisse ultrices a mattis vitae",style: Constant.headingText.copyWith(color: const Color(0xffFFFFFF)),textAlign: TextAlign.start,)),
+                  SizedBox(
+                      width: 35.2.h,
+                      child: Text(
+                        "@Sam Smith Lorem ipsum dolor sit amet consectetur. Eget aliquam suspendisse ultrices a mattis vitae",
+                        style: Constant.headingText
+                            .copyWith(color: const Color(0xffFFFFFF)),
+                        textAlign: TextAlign.start,
+                      )),
                 ],
               ),
-              getHorizontalSpace(3.9.h),
+
               Column(
                 children: [
-                 Container(padding: EdgeInsets.symmetric(horizontal: 1.4.h,vertical:1.4.h ),
-                   decoration: BoxDecoration(
-                   color: const Color(0xffFFFFFF).withOpacity(0.44),
-                     borderRadius: BorderRadius.circular(1.h)
-                 ),child: SvgPicture.asset('assets/svg/like.svg'),),
-                  getVerticalSpace(1.2.h),
-                  Container(padding: EdgeInsets.symmetric(horizontal: 1.2.h,vertical:1.2.h ),
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 1.4.h, vertical: 1.4.h),
                     decoration: BoxDecoration(
                         color: const Color(0xffFFFFFF).withOpacity(0.44),
-                        borderRadius: BorderRadius.circular(1.h)
-                    ),child: SvgPicture.asset('assets/svg/share.svg'),),
+                        borderRadius: BorderRadius.circular(1.h)),
+                    child: SvgPicture.asset('assets/svg/like.svg'),
+                  ),
                   getVerticalSpace(1.2.h),
-
-                  Container(height: 5.h,width: 5.h,
-                    padding: EdgeInsets.symmetric(horizontal: 1.2.h,vertical:1.2.h ),
+                  Container(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 1.2.h, vertical: 1.2.h),
                     decoration: BoxDecoration(
                         color: const Color(0xffFFFFFF).withOpacity(0.44),
-                        borderRadius: BorderRadius.circular(1.h)
-                    ),child:Image.asset('assets/png/eye.png',fit: BoxFit.cover,),),
+                        borderRadius: BorderRadius.circular(1.h)),
+                    child: SvgPicture.asset('assets/svg/share.svg'),
+                  ),
+                  getVerticalSpace(1.2.h),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(() => const ViewsStoryScreen());
+                    },
+                    child: Container(
+                      height: 5.h,
+                      width: 5.h,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 1.2.h, vertical: 1.2.h),
+                      decoration: BoxDecoration(
+                          color: const Color(0xffFFFFFF).withOpacity(0.44),
+                          borderRadius: BorderRadius.circular(1.h)),
+                      child: Image.asset(
+                        'assets/png/eye.png',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                 ],
               )
             ],
           ),
         )
       ]),
+    );
+  }
+
+  void showAlertDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Center(
+          child: Material(
+            color: Colors.transparent, // Transparent background for Material
+            child: Container(
+              height: 26.h,
+              width: 43.2.h,
+              padding: EdgeInsets.symmetric(horizontal: 4.4.h, vertical: 2.8.h),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(3.5.h),
+                color: Colors.white,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                          height: 5.2.h,
+                          width: 5.2.h,
+                          child: SvgPicture.asset(
+                            'assets/svg/deletealert.svg',
+                            fit: BoxFit.cover,
+                          )),
+                      getHorizontalSpace(2.h),
+                      Text(
+                        'Delete Story',
+                        style: TextStyle(
+                          color: const Color(0xff000000),
+                          fontSize: 16.px,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                 getVerticalSpace(2.5.h),
+                  Text(
+                    'Are you sure you want to Delete this Post?',
+                    style: Constant.buttonText
+                        .copyWith(color: const Color(0xff222222),
+                    fontWeight: FontWeight.w600),
+                  ),
+                  getVerticalSpace(3.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 6.h, vertical: 1.h),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(1.h),
+                            border: Border.all(color: const Color(0xffA0A0A0)),
+                          ),
+                          child: Text(
+                            'No',
+                            style: Constant.buttonText
+                                .copyWith(color:  const Color(0xffA0A0A0)),
+                          ),
+                        ),
+                      ),
+                     getHorizontalSpace(1.h),// Replaced custom method with SizedBox for simplicity
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 6.h, vertical: 1.1.h),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: const Color(0xffF20707),
+                            borderRadius: BorderRadius.circular(1.2.h),
+                          ),
+                          child: Text(
+                            'Yes',
+                            style: Constant.buttonText
+                                .copyWith(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

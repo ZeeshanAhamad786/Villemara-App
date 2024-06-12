@@ -8,6 +8,8 @@ import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'package:villemara_app/view/screens/add_post_section/play_story_screen.dart';
 
+import 'live_stream_screen.dart';
+
 class AddStoryScreen extends StatelessWidget {
   AddStoryScreen({super.key});
   final RxInt selectedCategory = 0.obs;
@@ -57,29 +59,36 @@ class AddStoryScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: EdgeInsets.symmetric(horizontal: 2.2.h),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(
-                              0.8.h), // 10% of the height (8.h)
-                          child: DottedBorder(
-                            dashPattern: const [10, 10],
-                            color: MyColor.blackBoldColor,
-                            strokeWidth: 3,
-                            borderType: BorderType.RRect,
-                            radius: Radius.circular(
-                                1.8.h), // 10% of the height (8.h)
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 1.8.h, vertical: 1.h),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SvgPicture.asset(imagesList[index]),
-                                  Text(
-                                    mediaName[index],
-                                    style: Constant.simpleText,
-                                  ),
-                                ],
+                        child: GestureDetector(onTap: (){
+                          if(index==2){
+                            Get.to(()=>GoToLive());
+
+                          }
+                        },
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(
+                                0.8.h), // 10% of the height (8.h)
+                            child: DottedBorder(
+                              dashPattern: const [10, 10],
+                              color: MyColor.blackBoldColor,
+                              strokeWidth: 3,
+                              borderType: BorderType.RRect,
+                              radius: Radius.circular(
+                                  1.8.h), // 10% of the height (8.h)
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 1.8.h, vertical: 1.h),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SvgPicture.asset(imagesList[index]),
+                                    Text(
+                                      mediaName[index],
+                                      style: Constant.simpleText,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),

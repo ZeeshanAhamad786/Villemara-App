@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
@@ -19,10 +18,20 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
   RxBool second = false.obs;
   RxBool third = false.obs;
   RxBool fourth = false.obs;
+  RxBool fifth = false.obs;
+  RxBool six = false.obs;
+
+  void _selectFilter(int index) {
+    first.value = index == 0;
+    second.value = index == 1;
+    third.value = index == 2;
+    fourth.value = index == 3;
+    fifth.value = index == 4;
+    six.value = index == 5;
+  }
+
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -30,11 +39,13 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            GestureDetector(onTap: () {
-              Get.back();
-            },
-                child: Icon(Icons.arrow_back_ios_new, size: 18.px)),
-            Text("Search Filters", style: Constant.textDesc),
+            GestureDetector(
+              onTap: () {
+                Get.back();
+              },
+              child: Icon(Icons.arrow_back_ios_new, size: 18.px),
+            ),
+            Text("Search Filters", style: Constant.textSearchFilter),
             SizedBox(height: 10, width: 10)
           ],
         ),
@@ -42,71 +53,73 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 3.h),
         child: Column(
-          children: [getVerticalSpace(5.h),
-            GestureDetector(
-              onTap: () {
-                first.value = true;
-                second.value = false;
-                third.value = false;
-                fourth.value = false;
-              },
-              child: Obx(() => CustomFilter(
-                text: "Renting",
-                icon: Icons.check,
-                isSelected: first.value,
-              )),
-            ),
+          children: [
+            getVerticalSpace(5.h),
+            _buildFilterRow(0, "Posts"),
             getVerticalSpace(3.h),
-            GestureDetector(
-              onTap: () {
-                first.value = false;
-                second.value = true;
-                third.value = false;
-                fourth.value = false;
-              },
-              child: Obx(() => CustomFilter(
-                text: "Developments",
-                icon: Icons.check,
-                isSelected: second.value,
-              )),
-            ),
+            _buildFilterRow(1, "Listings"),
             getVerticalSpace(3.h),
-            GestureDetector(
-              onTap: () {
-                first.value = false;
-                second.value = false;
-                third.value = true;
-                fourth.value = false;
-              },
-              child: Obx(() => CustomFilter(
-                text: "Joint Ventures",
-                icon: Icons.check,
-                isSelected: third.value,
-              )),
-            ),
+            Align(alignment: Alignment.centerLeft,
+                child: Text("Listing Categories",style: Constant.textDesc,)),
             getVerticalSpace(3.h),
-            GestureDetector(
-              onTap: () {
-                first.value = false;
-                second.value = false;
-                third.value = false;
-                fourth.value = true;
-              },
-              child: Obx(() => CustomFilter(
-                text: "Special Purpose Vehicles",
-                icon: Icons.check,
-                isSelected: fourth.value,
-              )),
-            ),
+            _buildFilterRow(2, "Renting"),
+            getVerticalSpace(3.h),
+            _buildFilterRow(3, "developments"),
+            getVerticalSpace(3.h),
+            _buildFilterRow(4, "joint ventures"),
+            getVerticalSpace(3.h),
+            _buildFilterRow(5, "Special Purpose Vehicles"),
             getVerticalSpace(4.h),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 7.w,vertical: 2.w),
-              decoration: BoxDecoration(color:MyColor.blackBoldColor,borderRadius: BorderRadius.circular(20)),
-              child: Text("Done",style: Constant.textDone,),
+            GestureDetector(
+              onTap: () {
+                // Handle 'Done' button tap
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 2.w),
+                decoration: BoxDecoration(
+                  color: MyColor.blackBoldColor,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text("Done", style: Constant.textDone),
+              ),
             )
           ],
         ),
       ),
     );
+  }
+
+  Widget _buildFilterRow(int index, String text) {
+    return GestureDetector(
+      onTap: () {
+        _selectFilter(index);
+      },
+      child: Obx(
+            () => CustomFilter(
+          text: text,
+          icon: Icons.check,
+          isSelected: _isSelected(index),
+        ),
+      ),
+    );
+  }
+
+  bool _isSelected(int index) {
+    switch (index) {
+      case 0:
+        return first.value;
+      case 1:
+        return second.value;
+      case 2:
+        return third.value;
+      case 3:
+        return fourth.value;
+      case 4:
+        return fifth.value;
+      case 5:
+        return six.value;
+      default:
+        return false;
+    }
   }
 }

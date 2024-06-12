@@ -24,6 +24,7 @@ class MyColor{
   static const Color buttonTextColor=Color(0XFF828282);
   static const Color simpleTextColor=Color(0XFF444444);
   static const Color chooseMultipleImageColor=Color(0XFFBCBCBC);
+  static const Color textGrey=Color(0XFFBDBDBD);
 
 
 

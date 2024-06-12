@@ -11,6 +11,7 @@ import 'package:villemara_app/view/screens/home_section/comment_screen.dart';
 import 'package:villemara_app/view/screens/home_section/like_screen.dart';
 import 'package:villemara_app/view/screens/home_section/search_filter_screen.dart';
 import 'package:villemara_app/view/screens/home_section/share_screen.dart';
+import 'package:villemara_app/view/screens/home_section/story_screen.dart';
 
 import '../../../controller/custom_widgets/constant.dart';
 
@@ -126,56 +127,60 @@ RxBool isSelected=false.obs;
                  scrollDirection: Axis.horizontal,
                  itemCount: images.length,
                  itemBuilder: (context, index) {
-                   return Container(
-                     margin: EdgeInsets.symmetric(horizontal: 0.5.h),
-                     child: Column(
-                       children: [
-                         Row(
-                           crossAxisAlignment: CrossAxisAlignment.start,
-                           children: [
-                             Stack(
-                               children: [
-                                 CircleAvatar(
-                                   backgroundImage: AssetImage(images[index]),
-                                   radius: 30,
-                                 ),
-                                 if (index == 0) // Only show the 'add' icon for the first image
-                                   Positioned(
-                                     bottom: 0,
-                                     right: .2,
-                                     child: Center(
-                                       child: Container(
-                                         height: 30,
-                                         width: 30,
-                                         decoration: BoxDecoration(
-                                           borderRadius: BorderRadius.circular(30),
-                                           color: MyColor.blackBoldColor,
-                                         ),
-                                         child: Transform.scale(
-                                           scale: 0.5,
-                                           child: Icon(
-                                             Icons.add,
-                                             color: Colors.white,
-                                             size: 30.px,
+                   return GestureDetector(onTap: () {
+                     Get.to(()=>StoryScreen());
+                   },
+                     child: Container(
+                       margin: EdgeInsets.symmetric(horizontal: 0.5.h),
+                       child: Column(
+                         children: [
+                           Row(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: [
+                               Stack(
+                                 children: [
+                                   CircleAvatar(
+                                     backgroundImage: AssetImage(images[index]),
+                                     radius: 30,
+                                   ),
+                                   if (index == 0) // Only show the 'add' icon for the first image
+                                     Positioned(
+                                       bottom: 0,
+                                       right: .2,
+                                       child: Center(
+                                         child: Container(
+                                           height: 30,
+                                           width: 30,
+                                           decoration: BoxDecoration(
+                                             borderRadius: BorderRadius.circular(30),
+                                             color: MyColor.blackBoldColor,
+                                           ),
+                                           child: Transform.scale(
+                                             scale: 0.5,
+                                             child: Icon(
+                                               Icons.add,
+                                               color: Colors.white,
+                                               size: 30.px,
+                                             ),
                                            ),
                                          ),
                                        ),
                                      ),
-                                   ),
-                               ],
-                             ),
-                             getHorizontalSpace(.5.h),
-                           ],
-                         ),
-                         getVerticalSpace(0.5.h),
-                         Text(
-                           profileNames[index],
-                           style: TextStyle(
-                             fontSize: 14.sp,
-                             color: Colors.black,
+                                 ],
+                               ),
+                               getHorizontalSpace(.5.h),
+                             ],
                            ),
-                         ),
-                       ],
+                           getVerticalSpace(0.5.h),
+                           Text(
+                             profileNames[index],
+                             style: TextStyle(
+                               fontSize: 14.sp,
+                               color: Colors.black,
+                             ),
+                           ),
+                         ],
+                       ),
                      ),
                    );
                  },

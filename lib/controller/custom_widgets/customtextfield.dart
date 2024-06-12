@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:villemara_app/controller/custom_widgets/constant.dart';
+import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 
-import 'constant.dart';
-import 'my_color.dart';
+
 
 Widget getHorizontalSpace (double width){
   return SizedBox(width: width,);
@@ -11,7 +13,7 @@ Widget getVerticalSpace (double height){
 }
 
 
-//
+
 
 
 class CustomFilter extends StatelessWidget {
@@ -41,4 +43,27 @@ class CustomFilter extends StatelessWidget {
       ],
     );
   }
+}
+Widget customTextField (String title,TextEditingController controller){
+  return  Container(
+      padding:
+      EdgeInsets.symmetric(horizontal: 2.2.h, vertical: 1.4.h),
+      alignment: Alignment.centerLeft,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.h),
+          color: MyColor.buttonColor),
+      child: TextFormField(
+        controller: controller,
+        style:Constant.textSearch.copyWith(color: const Color(0xff828282)) ,
+
+        decoration: InputDecoration(
+            isCollapsed: true,
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.h),
+                borderSide: BorderSide.none),
+            hintText: title,
+            hintStyle: Constant.textSearch.copyWith(color: const Color(0xff828282))
+
+        ),
+      )
+  );
 }

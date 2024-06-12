@@ -347,36 +347,49 @@ RxBool isSelected=false.obs;
              getVerticalSpace(2.h),
              Row(
                children: [
-                 Container(
-                   // margin: EdgeInsets.only(left: 1.5.h,),
-                   padding:  EdgeInsets.only(top: 1.4.h,bottom: 1.4.h,right: 1.h,left: 1.h),
-                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: MyColor.SearchColor.withOpacity(0.8) ),
-                   child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                     children: [
-                       SvgPicture.asset("assets/svg/heart.svg"),
-                       getHorizontalSpace(0.5.h),
-                       Text("12K",style: Constant.textName,),
-                     ],
+                 GestureDetector(onTap:() {
+             Get.to(()=>LikeScreen());
+                 },
+                   child: Container(
+                     // margin: EdgeInsets.only(left: 1.5.h,),
+                     padding:  EdgeInsets.only(top: 1.4.h,bottom: 1.4.h,right: 1.h,left: 1.h),
+                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: MyColor.SearchColor.withOpacity(0.8) ),
+                     child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                       children: [
+                         SvgPicture.asset("assets/svg/heart.svg"),
+                         getHorizontalSpace(0.5.h),
+                         Text("12K",style: Constant.textName,),
+                       ],
+                     ),
                    ),
                  ),
                  getHorizontalSpace(1.w),
-                 Container(
-                   padding:  EdgeInsets.only(top: 1.3.h,bottom: 1.3.h,right: 1.h,left: 1.h),
-                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:MyColor.SearchColor.withOpacity(0.8) ),
-                   child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                     children: [
-                       SvgPicture.asset("assets/svg/comments.svg"),
-                       getHorizontalSpace(0.5.h),
-                       Text("12K",style: Constant.textName,),
-                     ],
+                 GestureDetector(
+                   onTap: () {
+                     Get.to(()=>CommentScreen());
+                   },
+                   child: Container(
+                     padding:  EdgeInsets.only(top: 1.3.h,bottom: 1.3.h,right: 1.h,left: 1.h),
+                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:MyColor.SearchColor.withOpacity(0.8) ),
+                     child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                       children: [
+                         SvgPicture.asset("assets/svg/comments.svg"),
+                         getHorizontalSpace(0.5.h),
+                         Text("12K",style: Constant.textName,),
+                       ],
+                     ),
                    ),
                  ),
                  Expanded(child: SizedBox()),
-                 Container(
-                     margin: EdgeInsets.only(left: 1.h,),
-                     padding:  EdgeInsets.only(top: 1.4.h,bottom: 1.4.h,right: 1.5.h,left: 1.5.h),
-                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:MyColor.SearchColor.withOpacity(0.6) ),
-                     child: SvgPicture.asset("assets/svg/share.svg")
+                 GestureDetector(onTap:() {
+                   Get.to(()=>ShareScreen());
+                 },
+                   child: Container(
+                       margin: EdgeInsets.only(left: 1.h,),
+                       padding:  EdgeInsets.only(top: 1.4.h,bottom: 1.4.h,right: 1.5.h,left: 1.5.h),
+                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color:MyColor.SearchColor.withOpacity(0.6) ),
+                       child: SvgPicture.asset("assets/svg/share.svg")
+                   ),
                  ),
                ],
              ),

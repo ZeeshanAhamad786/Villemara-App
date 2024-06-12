@@ -13,6 +13,12 @@ class MyColor{
   static const Color SearchColor=Color(0xffF7F7F7);
   static const Color backgroundColor=Color(0xffECECEC);
   static const Color backgroundProfile=Color(0XFFF5F5F5);
+  static const Color blackBold=Color(0XFF444444);
+  static const Color white=Color(0XFFFFFFFF);
+  static const Color blackLike=Color(0XFF050505);
+  static const Color dividerColor=Color(0XFFE3E3E3);
+  static const Color choosePerson=Color(0XFF717171);
+
 
 
 

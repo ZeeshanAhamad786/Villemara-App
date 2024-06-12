@@ -38,6 +38,7 @@ dependencies:
   get: ^4.6.6
   responsive_sizer: ^3.3.1
   flutter_svg: ^2.0.10+1
+  story_view: ^0.16.5
 
 dev_dependencies:
   flutter_test:

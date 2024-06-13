@@ -11,6 +11,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final bool obscureText;
   final bool? phoneKeyboard;
+  final double? borderRadius;
 
   const CustomTextFormField({
     super.key,
@@ -19,7 +20,7 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.controller,
     this.obscureText = false,
-    this.phoneKeyboard,
+    this.phoneKeyboard, this.borderRadius,
   });
 
   @override
@@ -55,7 +56,7 @@ class CustomTextFormField extends StatelessWidget {
           // isDense: true,
 
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(36),
+            borderRadius: BorderRadius.circular(borderRadius??36),
             borderSide: const BorderSide(color: MyColor.simpleTextColor),
           ),
           border: OutlineInputBorder(

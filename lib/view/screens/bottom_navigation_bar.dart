@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 
+import 'blogs_secton/blogs_screen.dart';
+import 'chat_section/tab_bar.dart';
 import 'home_section/home_screen.dart';
 
 class BottomNavigationScreen extends StatefulWidget {
@@ -10,15 +12,15 @@ class BottomNavigationScreen extends StatefulWidget {
   const BottomNavigationScreen({super.key,  this.title});
 
   @override
-  _BottomNavigationScreenState createState() => _BottomNavigationScreenState();
+  BottomNavigationScreenState createState() => BottomNavigationScreenState();
 }
 
-class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
+class BottomNavigationScreenState extends State<BottomNavigationScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    const ChatScreen(),
+    const ChatTabBar(),
     const BlogsScreen(),
     const ProfileScreen(),
   ];
@@ -112,27 +114,8 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
 }
 
 
-class ChatScreen extends StatelessWidget {
-  const ChatScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Chat Screen'),
-    );
-  }
-}
 
-class BlogsScreen extends StatelessWidget {
-  const BlogsScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Blogs Screen'),
-    );
-  }
-}
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

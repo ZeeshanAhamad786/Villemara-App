@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -7,6 +6,9 @@ import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'home_section/home_screen.dart';
 
 class BottomNavigationScreen extends StatefulWidget {
+  final String? title;
+  const BottomNavigationScreen({super.key,  this.title});
+
   @override
   _BottomNavigationScreenState createState() => _BottomNavigationScreenState();
 }
@@ -15,10 +17,10 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
-    HomeScreen(),
-    ChatScreen(),
-    BlogsScreen(),
-    ProfileScreen(),
+    const HomeScreen(),
+    const ChatScreen(),
+    const BlogsScreen(),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -51,40 +53,33 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                 color: Colors.grey.withOpacity(0.4),
                 spreadRadius: 2,
                 blurRadius: 5,
-                offset: Offset(0, 1), // changes position of shadow
+                offset: const Offset(0, 1), // changes position of shadow
               ),
             ],
           ),
           child: BottomAppBar(
-            shape: CircularNotchedRectangle(),
+            shape: const CircularNotchedRectangle(),
             notchMargin: 0,
             color: Colors.white,
             elevation: 0,
-            child: Container(
-
-              decoration: BoxDecoration(
-
-
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      buildNavItem(0, 'assets/svg/homeImage.svg', 'Home'),
-                      buildNavItem(1, 'assets/svg/chatImage.svg', 'Chats'),
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      buildNavItem(2, 'assets/svg/blogs.svg', 'Blogs'),
-                      buildNavItem(3, 'assets/svg/profile.svg', 'Profile'),
-                    ],
-                  ),
-                ],
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    buildNavItem(0, 'assets/svg/homeImage.svg', 'Home'),
+                    buildNavItem(1, 'assets/svg/chatImage.svg', 'Chats'),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    buildNavItem(2, 'assets/svg/blogs.svg', 'Blogs'),
+                    buildNavItem(3, 'assets/svg/profile.svg', 'Profile'),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
@@ -118,27 +113,33 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
 
 
 class ChatScreen extends StatelessWidget {
+  const ChatScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Chat Screen'),
     );
   }
 }
 
 class BlogsScreen extends StatelessWidget {
+  const BlogsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Blogs Screen'),
     );
   }
 }
 
 class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text('Profile Screen'),
     );
   }

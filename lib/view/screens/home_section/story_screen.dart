@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:story_view/controller/story_controller.dart';
 import 'package:story_view/utils.dart';
@@ -66,7 +63,7 @@ class StoryScreen extends StatelessWidget {
           bottom: 5.h,left: 2.5.h,right: 3.w,
           child: Row(children: [
             Expanded(child: Text("@Sam Smith Lorem ipsum dolor sit amet consectetur. Eget aliquam suspendisse ultrices a mattis vitae",
-              style:Constant.textSaim ,)),
+              style:Constant.simpleText ,)),
             Container(padding: EdgeInsets.symmetric(horizontal: 1.4.h,vertical:1.4.h ),
               decoration: BoxDecoration(
                   color: const Color(0xffFFFFFF).withOpacity(0.44),

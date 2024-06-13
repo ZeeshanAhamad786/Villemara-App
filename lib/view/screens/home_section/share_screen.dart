@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'package:villemara_app/model/share_screen_model.dart';
@@ -10,7 +9,7 @@ import 'package:villemara_app/model/share_screen_model.dart';
 import '../../../controller/custom_widgets/constant.dart';
 import '../../../controller/custom_widgets/customtextfield.dart';
 class ShareScreen extends StatefulWidget {
-  const ShareScreen({Key? key}) : super(key: key);
+  const ShareScreen({super.key});
 
   @override
   State<ShareScreen> createState() => _ShareScreenState();

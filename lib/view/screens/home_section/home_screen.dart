@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -9,14 +6,16 @@ import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'package:villemara_app/view/screens/home_section/comment_screen.dart';
 import 'package:villemara_app/view/screens/home_section/like_screen.dart';
+import 'package:villemara_app/view/screens/home_section/notification_screen.dart';
 import 'package:villemara_app/view/screens/home_section/search_filter_screen.dart';
 import 'package:villemara_app/view/screens/home_section/share_screen.dart';
 import 'package:villemara_app/view/screens/home_section/story_screen.dart';
 
 import '../../../controller/custom_widgets/constant.dart';
+import '../add_post_section/add_story_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -34,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<String> profileNames = [
     "zeeshan",
     "Ahmad",
-    "Umer",
+    "Amer",
     "Abdullah",
     "Ramzan",
   ];
@@ -71,7 +70,7 @@ RxBool isSelected=false.obs;
                      decoration:BoxDecoration(borderRadius: BorderRadius.circular(30),color:
                      Colors.white,boxShadow: [
                        BoxShadow(color:MyColor.blackBoldColor.withOpacity(0.1),blurRadius: 8,
-                           offset: Offset(1, 1),spreadRadius: 0 )
+                           offset: const Offset(1, 1),spreadRadius: 0 )
                      ]),
                      child: Transform.scale(scale: 0.5,
                          child: SvgPicture.asset("assets/svg/cancel.svg")),
@@ -79,20 +78,20 @@ RxBool isSelected=false.obs;
                  ),
                  hintText: "Search",
                  hintStyle: Constant.textSearch,
-                 contentPadding: EdgeInsets.all(8),
+                 contentPadding: const EdgeInsets.all(8),
                  focusedBorder: OutlineInputBorder(
                    borderRadius: BorderRadius.circular(30),
-                   borderSide: BorderSide(color: MyColor.blackBoldColor),
+                   borderSide: const BorderSide(color: MyColor.blackBoldColor),
                  ),
                  enabledBorder: OutlineInputBorder(
                    borderRadius: BorderRadius.circular(30),
-                   borderSide: BorderSide(color: MyColor.SearchColor),
+                   borderSide: const BorderSide(color: MyColor.SearchColor),
                  ),
                ),
              )  :Row(
                children: [
                  SvgPicture.asset("assets/svg/villemeraLogo.svg"),
-                 Expanded(child: SizedBox()),
+                 const Expanded(child: SizedBox()),
                  GestureDetector(onTap:() {
                    isSelected.value=true;
                  },
@@ -101,7 +100,7 @@ RxBool isSelected=false.obs;
                      decoration:BoxDecoration(borderRadius: BorderRadius.circular(30),color:
                      Colors.white,boxShadow: [
                        BoxShadow(color:MyColor.blackBoldColor.withOpacity(0.1),blurRadius: 8,
-                           offset: Offset(1, 1),spreadRadius: 0 )
+                           offset: const Offset(1, 1),spreadRadius: 0 )
                      ]),
                      child: Transform.scale(scale: 0.5,
                          child: SvgPicture.asset("assets/svg/search1svg.svg")),
@@ -113,10 +112,14 @@ RxBool isSelected=false.obs;
                    decoration:BoxDecoration(borderRadius: BorderRadius.circular(30),color:
                    Colors.white,boxShadow: [
                      BoxShadow(color:MyColor.blackBoldColor.withOpacity(0.1),blurRadius: 8,
-                         offset: Offset(1, 1),spreadRadius: 0 )
+                         offset: const Offset(1, 1),spreadRadius: 0 )
                    ]),
                    child: Transform.scale(scale: 0.5,
-                       child: SvgPicture.asset("assets/svg/notification.svg")),
+                       child: GestureDetector(
+                           onTap: (){
+                             Get.to(()=>const NotificationScreen());
+                           },
+                           child: SvgPicture.asset("assets/svg/notification.svg"))),
                  )
                ],
              ),
@@ -128,7 +131,13 @@ RxBool isSelected=false.obs;
                  itemCount: images.length,
                  itemBuilder: (context, index) {
                    return GestureDetector(onTap: () {
-                     Get.to(()=>StoryScreen());
+                     if(index==0){
+                       Get.to(()=>AddStoryScreen());
+
+                     }else{
+                       Get.to(()=>StoryScreen());
+
+                     }
                    },
                      child: Container(
                        margin: EdgeInsets.symmetric(horizontal: 0.5.h),
@@ -191,11 +200,11 @@ RxBool isSelected=false.obs;
                Image.asset("assets/png/backgrounImage.png"),
                Container(
                  margin: EdgeInsets.only(left: 1.h,right: 25.w,top: 1.h),
-                 padding: EdgeInsets.all(4),
+                 padding: const EdgeInsets.all(4),
                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.white.withOpacity(0.6) ),
                  child: Row(mainAxisAlignment: MainAxisAlignment.start,
                    children: [
-                     CircleAvatar(backgroundImage: AssetImage("assets/png/profile2.png"),radius: 20,),
+                     const CircleAvatar(backgroundImage: AssetImage("assets/png/profile2.png"),radius: 20,),
                      getHorizontalSpace(0.5.w),
                      Expanded(
                        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
@@ -213,7 +222,7 @@ RxBool isSelected=false.obs;
                Positioned(
                  bottom: 8,
                  child: GestureDetector(onTap:() {
-                   Get.to(()=>LikeScreen());
+                   Get.to(()=>const LikeScreen());
                  },
                    child: Container(
                      margin: EdgeInsets.only(left: 1.5.h,),

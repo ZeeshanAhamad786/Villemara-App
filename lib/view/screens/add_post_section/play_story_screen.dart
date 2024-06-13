@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -9,6 +8,7 @@ import 'package:story_view/widgets/story_view.dart';
 import 'package:villemara_app/controller/custom_widgets/constant.dart';
 import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 import 'package:villemara_app/view/screens/add_post_section/views_of_story.dart';
+import 'package:villemara_app/view/screens/home_section/share_screen.dart';
 
 class PlayStoryScreen extends StatelessWidget {
   PlayStoryScreen({super.key});
@@ -111,13 +111,17 @@ class PlayStoryScreen extends StatelessWidget {
                     child: SvgPicture.asset('assets/svg/like.svg'),
                   ),
                   getVerticalSpace(1.2.h),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 1.2.h, vertical: 1.2.h),
-                    decoration: BoxDecoration(
-                        color: const Color(0xffFFFFFF).withOpacity(0.44),
-                        borderRadius: BorderRadius.circular(1.h)),
-                    child: SvgPicture.asset('assets/svg/share.svg'),
+                  GestureDetector(onTap: (){
+                    Get.to(()=>const ShareScreen());
+                  },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 1.2.h, vertical: 1.2.h),
+                      decoration: BoxDecoration(
+                          color: const Color(0xffFFFFFF).withOpacity(0.44),
+                          borderRadius: BorderRadius.circular(1.h)),
+                      child: SvgPicture.asset('assets/svg/share.svg'),
+                    ),
                   ),
                   getVerticalSpace(1.2.h),
                   GestureDetector(

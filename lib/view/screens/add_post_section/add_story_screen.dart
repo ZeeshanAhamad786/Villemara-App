@@ -1,4 +1,5 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ import 'package:villemara_app/controller/custom_widgets/constant.dart';
 import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'package:villemara_app/view/screens/add_post_section/play_story_screen.dart';
+import 'package:villemara_app/view/screens/bottom_navigation_bar.dart';
 
 import 'live_stream_screen.dart';
 
@@ -40,12 +42,23 @@ class AddStoryScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 7.h,
-                ),
-                Text(
-                  'Add Story',
-                  style: Constant.headingText,
+                getVerticalSpace( 7.h),
+
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(onTap: () {
+                      Get.back();
+                    },
+
+                        child: Icon(Icons.arrow_back_ios_new_sharp,size: 2.3.h,)),
+                    const Expanded(child: SizedBox()),
+
+                    Text(
+                      'Add Story',
+                      style: Constant.headingText,
+                    ),
+                    const Expanded(child: SizedBox())
+                  ],
                 ),
                getVerticalSpace(4.h),
 
@@ -125,7 +138,7 @@ class AddStoryScreen extends StatelessWidget {
                     getHorizontalSpace(1.h),
                     GestureDetector(
                       onTap: () {
-                        Get.to(()=>PlayStoryScreen());
+                        Get.to(()=> PlayStoryScreen());
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(

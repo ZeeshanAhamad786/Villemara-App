@@ -7,6 +7,7 @@ import 'package:villemara_app/controller/custom_widgets/custom_text_form_feld.da
 import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'package:villemara_app/view/screens/authentication_screens/signup_screen.dart';
+import 'package:villemara_app/view/screens/bottom_navigation_bar.dart';
 
 import 'email_confirmation_screen.dart';
 import 'forget_password_screen.dart';
@@ -84,7 +85,9 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(()=>const BottomNavigationScreen());
+                      },
                       child: Container(
                         padding: EdgeInsets.symmetric(
                             horizontal: 5.h, vertical: 1.1.h),

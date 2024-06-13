@@ -7,7 +7,7 @@ import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 
 import '../../../controller/custom_widgets/constant.dart';
 class LiveWatchingsScreen extends StatefulWidget {
-  const LiveWatchingsScreen({Key? key}) : super(key: key);
+  const LiveWatchingsScreen({super.key});
 
   @override
   State<LiveWatchingsScreen> createState() => _LiveWatchingsScreenState();
@@ -92,8 +92,7 @@ class _LiveWatchingsScreenState extends State<LiveWatchingsScreen> {
                           radius: 20,
                         ),
                         getHorizontalSpace(2.w),
-                        Expanded(
-                            child: TextFormField(decoration: InputDecoration.collapsed(hintText: data1[index]),style: Constant.textLikeName,))
+                        Text(data1[index],style: TextStyle(fontFamily: 'medium',color: const Color(0xff444444),fontSize: 13.px,fontWeight: FontWeight.w400),)
                       ],
                     ),
                   );

@@ -7,7 +7,7 @@ import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 import '../../../controller/custom_widgets/constant.dart';
 import '../../../controller/custom_widgets/my_color.dart';
 class LikeScreen extends StatefulWidget {
-  const LikeScreen({Key? key}) : super(key: key);
+  const LikeScreen({super.key});
 
   @override
   State<LikeScreen> createState() => _LikeScreenState();
@@ -49,7 +49,7 @@ class _LikeScreenState extends State<LikeScreen> {
             },
                 child: Icon(Icons.arrow_back_ios_new, size: 18.px)),
             Text("Likes", style: Constant.textLikes),
-            SizedBox(height: 10, width: 10)
+            const SizedBox(height: 10, width: 10)
           ],
         ),
       ),
@@ -60,7 +60,7 @@ class _LikeScreenState extends State<LikeScreen> {
             children: [
               SvgPicture.asset("assets/svg/heart.svg"),
               getHorizontalSpace(.4.w),
-              Text("100"),
+              const Text("100"),
             ],
           ),
           Expanded(
@@ -77,12 +77,13 @@ class _LikeScreenState extends State<LikeScreen> {
                           backgroundImage: AssetImage(data[index]),
                           radius: 20,
                         ),
-                        getHorizontalSpace(2.w),
-                        Expanded(
-                            child: TextFormField(decoration: InputDecoration.collapsed(hintText: data1[index]),style: Constant.textLikeName,))
+                        getHorizontalSpace(2.h),
+                        // Expanded(
+                        //     child: TextFormField(decoration: InputDecoration.collapsed(hintText: data1[index]),style: Constant.textLikeName,))
+                      Text(data1[index],style: TextStyle(fontFamily: 'medium',color: const Color(0xff444444),fontSize: 16.px,fontWeight: FontWeight.w400),)
                       ],
                     ),
-                    Divider(color: MyColor.dividerColor),
+                    const Divider(color: MyColor.dividerColor),
                   ],
                 ),
               );

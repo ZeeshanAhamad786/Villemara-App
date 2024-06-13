@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 
 import '../../../controller/custom_widgets/constant.dart';
-import '../../../controller/custom_widgets/my_color.dart';
 class ViewsStoryScreen extends StatefulWidget {
-  const ViewsStoryScreen({Key? key}) : super(key: key);
+  const ViewsStoryScreen({super.key});
 
   @override
   State<ViewsStoryScreen> createState() => _ViewsStoryScreenState();
@@ -82,8 +79,7 @@ class _ViewsStoryScreenState extends State<ViewsStoryScreen> {
                           radius: 20,
                         ),
                         getHorizontalSpace(2.w),
-                        Expanded(
-                            child: TextFormField(decoration: InputDecoration.collapsed(hintText: data1[index]),style: Constant.textLikeName,))
+                        Text(data1[index],style: TextStyle(fontFamily: 'medium',color: const Color(0xff444444),fontSize: 16.px,fontWeight: FontWeight.w400),)
                       ],
                     ),
                   );

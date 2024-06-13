@@ -1,13 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import '../../../controller/custom_widgets/constant.dart';
+import '../bottom_navigation_bar.dart';
 
 class SearchFilterScreen extends StatefulWidget {
-  const SearchFilterScreen({Key? key}) : super(key: key);
+  const SearchFilterScreen({super.key});
 
   @override
   State<SearchFilterScreen> createState() => _SearchFilterScreenState();
@@ -45,45 +45,47 @@ class _SearchFilterScreenState extends State<SearchFilterScreen> {
               },
               child: Icon(Icons.arrow_back_ios_new, size: 18.px),
             ),
-            Text("Search Filters", style: Constant.textSearchFilter),
-            SizedBox(height: 10, width: 10)
+            Text("Search Filters", style: Constant.simpleText),
+            const SizedBox(height: 10, width: 10)
           ],
         ),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 3.h),
-        child: Column(
-          children: [
-            getVerticalSpace(5.h),
-            _buildFilterRow(0, "Posts"),
-            getVerticalSpace(3.h),
-            _buildFilterRow(1, "Listings"),
-            getVerticalSpace(3.h),
-            Align(alignment: Alignment.centerLeft,
-                child: Text("Listing Categories",style: Constant.textDesc,)),
-            getVerticalSpace(3.h),
-            _buildFilterRow(2, "Renting"),
-            getVerticalSpace(3.h),
-            _buildFilterRow(3, "developments"),
-            getVerticalSpace(3.h),
-            _buildFilterRow(4, "joint ventures"),
-            getVerticalSpace(3.h),
-            _buildFilterRow(5, "Special Purpose Vehicles"),
-            getVerticalSpace(4.h),
-            GestureDetector(
-              onTap: () {
-                // Handle 'Done' button tap
-              },
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 2.w),
-                decoration: BoxDecoration(
-                  color: MyColor.blackBoldColor,
-                  borderRadius: BorderRadius.circular(20),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              getVerticalSpace(5.h),
+              _buildFilterRow(0, "Posts"),
+              getVerticalSpace(3.h),
+              _buildFilterRow(1, "Listings"),
+              getVerticalSpace(3.h),
+              Align(alignment: Alignment.centerLeft,
+                  child: Text("Listing Categories",style: Constant.textDesc,)),
+              getVerticalSpace(3.h),
+              _buildFilterRow(2, "Renting"),
+              getVerticalSpace(3.h),
+              _buildFilterRow(3, "developments"),
+              getVerticalSpace(3.h),
+              _buildFilterRow(4, "joint ventures"),
+              getVerticalSpace(3.h),
+              _buildFilterRow(5, "Special Purpose Vehicles"),
+              getVerticalSpace(4.h),
+              GestureDetector(
+                onTap: () {
+                  Get.to(()=>const BottomNavigationScreen());
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 2.w),
+                  decoration: BoxDecoration(
+                    color: MyColor.blackBoldColor,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text("Done", style: Constant.textDone),
                 ),
-                child: Text("Done", style: Constant.textDone),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

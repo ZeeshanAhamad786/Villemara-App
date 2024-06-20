@@ -106,11 +106,11 @@ class Constant {
   static TextStyle headingText = TextStyle(
       fontSize: 18.px,
       fontWeight: FontWeight.w400,
-      color: MyColor.headingColor);
+      color: MyColor.headingColor,fontFamily: 'bold');
   static TextStyle headingText1 = TextStyle(
       fontSize: 20.px,
       fontWeight: FontWeight.w600,
-      color: Color(0xff1E1E1E),
+      color: const Color(0xff1E1E1E),
   fontFamily: 'bold');
   static TextStyle buttonText = TextStyle(
       fontSize: 12.px,

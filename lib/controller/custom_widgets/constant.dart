@@ -151,4 +151,42 @@ class Constant {
       fontSize: 12.px,
       fontWeight: FontWeight.w400,
       color: MyColor.chooseMultipleImageColor);
+  static TextStyle milkTate = TextStyle(
+      fontSize: 20.px,
+      fontWeight: FontWeight.w500,
+      color: MyColor.blackBoldColor,fontFamily: "bold");
+  static TextStyle sayHi = TextStyle(
+      fontSize: 12.px,
+      fontWeight: FontWeight.w300,
+      color: MyColor.blackBoldColor,fontFamily: "regular");
+  static TextStyle litaEmail = TextStyle(
+      fontSize: 10.px,
+      fontWeight: FontWeight.w300,
+      color: MyColor.blackBoldColor,fontFamily: "regular");
+  static TextStyle projects = TextStyle(fontSize: 14.px,
+    fontWeight: FontWeight.w500,
+    color: MyColor.blackBoldColor,fontFamily: "bold");
+  static TextStyle companyName = TextStyle(fontSize: 12.px,
+      fontWeight: FontWeight.w500,
+      color: MyColor.blackBoldColor,fontFamily: "bold");
+  static TextStyle designation = TextStyle(fontSize: 12.px,
+      fontWeight: FontWeight.w400,
+      color: MyColor.choosePerson,fontFamily: "medium");
+  static TextStyle currentJob = TextStyle(fontSize: 12.px,
+      fontWeight: FontWeight.w400,
+      color: MyColor.greyColor,fontFamily: "medium");
+  static TextStyle projectTitle = TextStyle(fontSize: 18.px,
+      fontWeight: FontWeight.w400,
+      color: MyColor.headingColor,fontFamily: "medium");
+  static TextStyle projectDesc = TextStyle(fontSize: 12.px,
+      fontWeight: FontWeight.w400,
+      color: MyColor.blackBoldColor,fontFamily: "medium");
+  static TextStyle textRed = TextStyle(fontSize: 12.px,
+      fontWeight: FontWeight.w500,
+      color: MyColor.textRed,fontFamily: "medium");
+  static TextStyle addNew = TextStyle(fontSize: 10.px,
+      fontWeight: FontWeight.w400,
+      color: MyColor.blackBoldColor,
+      fontFamily: "regular");
+
 }

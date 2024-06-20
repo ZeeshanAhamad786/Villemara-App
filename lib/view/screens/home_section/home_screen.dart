@@ -196,6 +196,7 @@ RxBool isSelected=false.obs;
                ),
              ),
              getVerticalSpace(2.h),
+
              Stack(children: [
                Image.asset("assets/png/backgrounImage.png"),
                Container(
@@ -405,7 +406,8 @@ RxBool isSelected=false.obs;
 
              Divider(color: MyColor.greyColor,),
            ],
-         ),)
+         ),
+         )
         ),
       ),
     );

@@ -9,6 +9,7 @@ import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'package:villemara_app/view/screens/authentication_screens/login_screen.dart';
 
 import 'email_confirmation_screen.dart';
+import 'facerecognization_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -49,49 +50,63 @@ class SignUpScreen extends StatelessWidget {
               ),
               getVerticalSpace(3.h),
               CustomTextFormField(
-                hintText: 'Name',
-                prefixIcon: SvgPicture.asset('assets/svg/nameicon.svg'),
-              ),
+                  hintText: 'Name',
+                  prefixIcon: SvgPicture.asset('assets/svg/nameicon.svg'),
+                  readOnly: false),
               getVerticalSpace(2.h),
               CustomTextFormField(
-                hintText: 'Email',
-                prefixIcon: SvgPicture.asset('assets/svg/emailicon.svg'),
-              ),
+                  hintText: 'Email',
+                  prefixIcon: SvgPicture.asset('assets/svg/emailicon.svg'),
+                  readOnly: false),
               getVerticalSpace(2.h),
               CustomTextFormField(
-                hintText: 'Password',
-                prefixIcon: SvgPicture.asset('assets/svg/passwordicon.svg'),
-                suffixIcon: SvgPicture.asset('assets/svg/eye-off.svg'),
-              ),
+                  hintText: 'Password',
+                  prefixIcon: SvgPicture.asset('assets/svg/passwordicon.svg'),
+                  suffixIcon: SvgPicture.asset('assets/svg/eye-off.svg'),
+                  readOnly: false),
               getVerticalSpace(2.h),
               CustomTextFormField(
-                hintText: 'Confirm Password',
-                prefixIcon: SvgPicture.asset('assets/svg/passwordicon.svg'),
-                suffixIcon: SvgPicture.asset('assets/svg/eye-off.svg'),
-              ),
-              getVerticalSpace(2.h)
-              ,
-              GestureDetector(onTap: (){
-                showAlertDialog(context);
-              },
-                child: Container(padding: EdgeInsets.symmetric(horizontal: 2.8.h,vertical: 1.3.h),
+                  hintText: 'Confirm Password',
+                  prefixIcon: SvgPicture.asset('assets/svg/passwordicon.svg'),
+                  suffixIcon: SvgPicture.asset('assets/svg/eye-off.svg'),
+                  readOnly: false),
+              getVerticalSpace(2.h),
+              CustomTextFormField(
+                  hintText: 'Company House No.',
+                  prefixIcon: SvgPicture.asset('assets/svg/company.svg'),
+
+                  readOnly: false),
+              getVerticalSpace(2.h),
+              GestureDetector(
+                onTap: () {
+                 Get.to(()=>const FaceRecognization());
+                },
+                child: Container(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 2.8.h, vertical: 1.3.h),
                   decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(36),
-                  color: const Color(0xffF8F8F8),
-                ),child: Row(children: [
-                  SvgPicture.asset('assets/svg/fngerprnt.svg'),
-                 getHorizontalSpace(1.h),
-                 Text('Add Fingerprint Authentication',style:  TextStyle(
-                     color: const Color(0xffA7A7A7),
-                     fontWeight: FontWeight.w400,
-                     fontSize: 12.px
-                 ),)
-                ],),),
+                    borderRadius: BorderRadius.circular(36),
+                    color: const Color(0xffF8F8F8),
+                  ),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset('assets/svg/facerecog.svg'),
+                      getHorizontalSpace(1.h),
+                      Text(
+                        'Face Recognition',
+                        style: TextStyle(
+                            color: const Color(0xffA7A7A7),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12.px),
+                      )
+                    ],
+                  ),
+                ),
               ),
               getVerticalSpace(3.h),
               GestureDetector(
                 onTap: () {
-                  Get.to(()=>const LoginScreen());
+                  Get.to(() => const LoginScreen());
                 },
                 child: Container(
                   padding:
@@ -108,22 +123,26 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               getVerticalSpace(4.h),
-              GestureDetector(onTap: (){
-                Get.to(()=>const LoginScreen());
-              },
-                child: RichText(text: TextSpan(children: [
-                  TextSpan(text: 'Already have an account? ',style: TextStyle(
-                      fontWeight:FontWeight.w400 ,
-                      fontSize: 12.px,
-                      fontFamily: 'medium',
-                      color: const Color(0xff7A7A7A)
-                  )),
-                  TextSpan(text: 'Log In',style: TextStyle(
-                      fontWeight:FontWeight.w400 ,
-                      fontSize: 12.px,
-                      fontFamily: 'bold',
-                      color: const Color(0xff1E1E1E)
-                  ))
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => const LoginScreen());
+                },
+                child: RichText(
+                    text: TextSpan(children: [
+                  TextSpan(
+                      text: 'Already have an account? ',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12.px,
+                          fontFamily: 'medium',
+                          color: const Color(0xff7A7A7A))),
+                  TextSpan(
+                      text: 'Log In',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12.px,
+                          fontFamily: 'bold',
+                          color: const Color(0xff1E1E1E)))
                 ])),
               )
             ],
@@ -132,6 +151,7 @@ class SignUpScreen extends StatelessWidget {
       ),
     );
   }
+
   void showAlertDialog(BuildContext context) {
     showDialog(
       context: context,
@@ -151,26 +171,30 @@ class SignUpScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "Fingerprint Authentication",textAlign: TextAlign.center,
+                    "Fingerprint Authentication",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: const Color(0xff444444),
-                      fontSize: 18.px,fontFamily: 'medium',
+                      fontSize: 18.px,
+                      fontFamily: 'medium',
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                   getVerticalSpace(1.h),
                   Text(
-                    'Hold on to your mobile fingerprint sensor to activate.',textAlign: TextAlign.center,
-                    style: Constant.buttonText
-                        .copyWith(color: const Color(0xff717171),
-                        fontWeight: FontWeight.w600,fontFamily: 'regular'),
+                    'Hold on to your mobile fingerprint sensor to activate.',
+                    textAlign: TextAlign.center,
+                    style: Constant.buttonText.copyWith(
+                        color: const Color(0xff717171),
+                        fontWeight: FontWeight.w600,
+                        fontFamily: 'regular'),
                   ),
                   getVerticalSpace(3.h),
-                  GestureDetector(onTap: (){
-                    Get.to(()=>const EmailConfirmation());
-                  },
+                  GestureDetector(
+                      onTap: () {
+                        Get.to(() => const EmailConfirmation());
+                      },
                       child: SvgPicture.asset('assets/svg/finger.svg'))
-
                 ],
               ),
             ),
@@ -179,5 +203,4 @@ class SignUpScreen extends StatelessWidget {
       },
     );
   }
-
 }

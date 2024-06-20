@@ -56,7 +56,7 @@ class BlogsScreen extends StatelessWidget {
                 child: CustomTextFormField(
                   hintText: 'Search...',
                   prefixIcon: SvgPicture.asset('assets/svg/searchcon.svg'),
-                  borderRadius: 5.h,
+                  borderRadius: 5.h,readOnly: false
                 ),
               ),
               getVerticalSpace(2.h),

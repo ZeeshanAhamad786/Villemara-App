@@ -1,5 +1,4 @@
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -8,7 +7,6 @@ import 'package:villemara_app/controller/custom_widgets/constant.dart';
 import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'package:villemara_app/view/screens/add_post_section/play_story_screen.dart';
-import 'package:villemara_app/view/screens/bottom_navigation_bar.dart';
 
 import 'live_stream_screen.dart';
 
@@ -70,7 +68,8 @@ class AddStoryScreen extends StatelessWidget {
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return Padding(
+                      return
+                        Padding(
                         padding: EdgeInsets.symmetric(horizontal: 2.2.h),
                         child: GestureDetector(onTap: (){
                           if(index==2){

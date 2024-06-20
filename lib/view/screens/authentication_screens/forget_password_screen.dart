@@ -35,7 +35,7 @@ class ForgetScreen extends StatelessWidget {
               style: TextStyle(fontSize: 12.px, fontWeight: FontWeight.w400,color: const Color(0xff444444),fontFamily: 'medium'),
             ),            getVerticalSpace(3.h),
             CustomTextFormField(
-              hintText: 'Email',
+              hintText: 'Email',readOnly: false,
               prefixIcon: SvgPicture.asset('assets/svg/emailicon.svg'),
             ), getVerticalSpace(3.h),
             GestureDetector(

@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(useMaterial3: true),
-        home:  const SplashScreen(),
+        home:    const SplashScreen(),
       );
     });
   }

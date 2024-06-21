@@ -26,6 +26,7 @@ class MyColor{
   static const Color chooseMultipleImageColor=Color(0XFFBCBCBC);
   static const Color textGrey=Color(0XFFBDBDBD);
   static const Color textRed=Color(0XFFE51616);
+  static const Color textDarkGrey=Color(0XFFE2E2E2);
 
 
 

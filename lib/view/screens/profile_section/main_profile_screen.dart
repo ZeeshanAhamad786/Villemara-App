@@ -12,9 +12,11 @@ import '../../../controller/custom_widgets/constant.dart';
 import '../../../controller/custom_widgets/my_color.dart';
 import '../../../model/company_model.dart';
 import '../../../model/main_profile_model.dart';
+import '../../../model/recommendation_model.dart';
 import '../home_section/comment_screen.dart';
 import '../home_section/like_screen.dart';
 import '../home_section/share_screen.dart';
+import '../recommendations/recommend_home_screen.dart';
 class MainProfileScreen extends StatefulWidget {
   const MainProfileScreen({Key? key}) : super(key: key);
 
@@ -38,9 +40,18 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
         category: 'Renting', time: '2 hrs ago',
         tags: '#DreamHome #HomeForSale #PropertyListing #HouseHunting #DreamHouse #HomeSweetHome  #LuxuryLiving #RealEstateForSale #NewListing #HouseofTheDay')
   ];
+  List<RecommendationModel> recommendData=[
+    RecommendationModel(profileImage: 'assets/png/recommendProfile.png', profileName: 'Theo Champion',
+        profileTitle: 'Back-end developer at MyDodow', profileDescription: 'Lorem ipsum dolor sit amet consectetur. Erat convallis non tortor tortor at dolor aliquam. Sed sollicitudin amet enim mattis nisl. Pulvinar bibendum tempor in egestas nisl sagittis.',
+        profileDate: '2021.03.02'),
+    RecommendationModel(profileImage: 'assets/png/recommendProfile.png', profileName: 'Theo Champion',
+        profileTitle: 'Back-end developer at MyDodow', profileDescription: 'Lorem ipsum dolor sit amet consectetur. Erat convallis non tortor tortor at dolor aliquam. Sed sollicitudin amet enim mattis nisl. Pulvinar bibendum tempor in egestas nisl sagittis.',
+        profileDate: '2021.03.02')
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: MyColor.white,
       body: SingleChildScrollView(
         child: Column(children: [
           Stack(children: [
@@ -63,8 +74,15 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                     getVerticalSpace(1.w),
                     Text("Taxes Real Estate Broker | Managing Broker | Principal Broker",style: Constant.sayHi),
                     getVerticalSpace(1.w),
-                    Align(alignment:Alignment.centerLeft,
-                        child: Text("Litahan@gmail.com",style: Constant.litaEmail,))
+                    Row(mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SvgPicture.asset("assets/svg/linkden.svg"),
+                        getHorizontalSpace(1.w),
+                        SvgPicture.asset("assets/svg/Instagram.svg"),
+                        getHorizontalSpace(1.w),
+                        SvgPicture.asset("assets/svg/facebook.svg"),
+                      ],
+                    )
                   ],
                 ),
               ),
@@ -150,11 +168,71 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                         ),
                       );
                     }),
-                getVerticalSpace(3.h),
-                Align(alignment: Alignment.centerLeft,
-                    child: Text("Posts/Listings",style: Constant.projects,)),
 
-                //ListView Builder
+                getVerticalSpace(2.5.h),
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Recommendations",style: Constant.projects,),
+                    GestureDetector(onTap: (){
+                      Get.to(()=>const RecommendHomeScreen());
+                    },
+                        child: Text("View All",style: Constant.litaEmail,)),
+                  ],
+                ),
+                ListView.builder(
+                    padding: EdgeInsets.zero,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: recommendData.length,
+                    itemBuilder: (context,index){
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 2.w,vertical: 2.w),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(14),
+                              color:MyColor.white ,
+                              boxShadow: [
+                                BoxShadow(color: MyColor.blackBoldColor.withOpacity(0.1),
+                                    offset: Offset(2, 2),blurRadius: 15.4,spreadRadius: 0)
+                              ]
+                          ),
+
+                          child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 50.px,
+                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Image.asset(recommendData[index].profileImage,fit: BoxFit.cover,),
+                                  ),
+                                  getHorizontalSpace(2.w),
+                                  Expanded(
+                                    child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(recommendData[index].profileName,style: Constant.companyName,),
+                                        getVerticalSpace(0.2.h),
+                                        Text(recommendData[index].profileTitle,style: Constant.designation,),
+                                        getVerticalSpace(1.h),
+                                        Text(recommendData[index].profileDescription,style: Constant.currentJob,),
+                                        getVerticalSpace(1.h),
+                                        Text(recommendData[index].profileDate,style: Constant.currentJob,)
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+
+                            ],
+                          ),
+                        ),
+                      );
+                    }),
+
+
+////
                 getVerticalSpace(2.h),
                 ListView.builder(
                   physics: NeverScrollableScrollPhysics(),

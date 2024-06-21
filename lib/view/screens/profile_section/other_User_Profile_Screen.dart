@@ -48,13 +48,13 @@ class _OtherUserProfileScreenState extends State<OtherUserProfileScreen> {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 padding:EdgeInsets.only(right: 3.w,left: 2.w,top: 2.w,bottom: 1.w) ,
-                decoration: BoxDecoration(borderRadius: BorderRadius.only(topRight: Radius.circular(10)),color: Colors.white.withOpacity(0.58)),
+                decoration: BoxDecoration(borderRadius: const BorderRadius.only(topRight: Radius.circular(10)),color: Colors.white.withOpacity(0.58)),
                 child: Column(
                   children: [
                     Row(
                       children: [
                         Text("Mike Tate",style: Constant.milkTate,),
-                        Spacer(),
+                        const Spacer(),
                         Image.asset("assets/png/hand.png",width: 19.px,height: 19.px,),
                         getHorizontalSpace(1.w),
                         Text("Say Hi",style: Constant.sayHi,),

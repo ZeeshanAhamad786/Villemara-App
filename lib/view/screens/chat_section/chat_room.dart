@@ -53,7 +53,7 @@ class ChatRoomScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            title!.length>=7?"${title!.substring(0,10)}...": title!,
+                            title!.toString().length>=10?"${title!.substring(0,10)}...": title!,
                           ),
                         ],
                       ),

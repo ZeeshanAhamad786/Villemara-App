@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 import 'package:villemara_app/view/screens/project_section/project_screen.dart';
@@ -13,12 +12,14 @@ import '../../../controller/custom_widgets/my_color.dart';
 import '../../../model/company_model.dart';
 import '../../../model/main_profile_model.dart';
 import '../../../model/recommendation_model.dart';
+import '../experiences_section/experiences.dart';
 import '../home_section/comment_screen.dart';
 import '../home_section/like_screen.dart';
 import '../home_section/share_screen.dart';
 import '../recommendations/recommend_home_screen.dart';
+import 'edit_info_screen.dart';
 class MainProfileScreen extends StatefulWidget {
-  const MainProfileScreen({Key? key}) : super(key: key);
+  const MainProfileScreen({super.key});
 
   @override
   State<MainProfileScreen> createState() => _MainProfileScreenState();
@@ -60,13 +61,16 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 padding:EdgeInsets.only(right: 3.w,left: 2.w,top: 2.w,bottom: 1.w) ,
-                decoration: BoxDecoration(borderRadius: BorderRadius.only(topRight: Radius.circular(10)),color: Colors.white.withOpacity(0.58)),
+                decoration: BoxDecoration(borderRadius:const BorderRadius.only(topRight: Radius.circular(10)),color: Colors.white.withOpacity(0.58)),
                 child: Column(
                   children: [
                     Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text("Lita Han",style: Constant.milkTate,),
-                        SvgPicture.asset("assets/svg/write.svg",),
+                        GestureDetector(onTap: (){
+                          Get.to(()=>const EditInfoScreen());
+                        },
+                            child: SvgPicture.asset("assets/svg/write.svg",)),
                         // getHorizontalSpace(1.w),
                         // Text("Say Hi",style: Constant.sayHi,),
                       ],
@@ -106,7 +110,7 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                   children: [
                     Text("My Projects",style: Constant.projects,),
                     GestureDetector(onTap: () {
-                      Get.to(()=>ProjectScreen());
+                      Get.to(()=>const ProjectScreen());
                     },
                         child: Text("View All",style: Constant.litaEmail,)),
                   ],
@@ -124,12 +128,15 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                 Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Experience",style: Constant.projects,),
-                    SvgPicture.asset("assets/svg/write.svg",),
+                    GestureDetector(onTap: (){
+                      Get.to(()=>const Experiences());
+                    },
+                        child: SvgPicture.asset("assets/svg/write.svg",)),
                   ],
                 ),
                 ListView.builder(
                   padding: EdgeInsets.zero,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: data.length,
                     itemBuilder: (context,index){
@@ -193,7 +200,7 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                               color:MyColor.white ,
                               boxShadow: [
                                 BoxShadow(color: MyColor.blackBoldColor.withOpacity(0.1),
-                                    offset: Offset(2, 2),blurRadius: 15.4,spreadRadius: 0)
+                                    offset:const Offset(2, 2),blurRadius: 15.4,spreadRadius: 0)
                               ]
                           ),
 
@@ -235,7 +242,7 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
 ////
                 getVerticalSpace(2.h),
                 ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   padding: EdgeInsets.zero,
                   shrinkWrap: true,
                   itemCount: data1.length,
@@ -260,7 +267,7 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                                     backgroundImage: AssetImage(data1[index].profileImage),
                                     radius: 20,
                                   ),
-                                  SizedBox(width: 8),
+                                  const  SizedBox(width: 8),
                                   Expanded(
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -283,7 +290,7 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                                   color: Colors.white.withOpacity(0.58),
                                 ),
                                 child: PopupMenuButton(
-                                  icon: Icon(Icons.more_vert, color: Colors.black), // Adjust icon color as needed
+                                  icon: const Icon(Icons.more_vert, color: Colors.black), // Adjust icon color as needed
                                   itemBuilder: (BuildContext context) => [
                                     PopupMenuItem(
                                       value: 'delete',
@@ -293,7 +300,7 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                                         },
                                         child: Row(
                                           children: [
-                                            Icon(Icons.delete, color: MyColor.textRed),
+                                            const Icon(Icons.delete, color: MyColor.textRed),
                                             Text('Delete',style: Constant.textRed),
                                           ],
                                         ),
@@ -331,7 +338,7 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SvgPicture.asset("assets/svg/heart.svg"),
-                                      SizedBox(width: 8),
+                                      const SizedBox(width: 8),
                                       Text("12K", style: Constant.textName),
                                     ],
                                   ),
@@ -355,7 +362,7 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SvgPicture.asset("assets/svg/comments.svg"),
-                                      SizedBox(width: 8),
+                                      const SizedBox(width: 8),
                                       Text("12K", style: Constant.textName),
                                     ],
                                   ),
@@ -382,12 +389,12 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 16),
+                        const  SizedBox(height: 16),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("data:", style: Constant.textName),
-                            SizedBox(width: 8),
+                            const   SizedBox(width: 8),
                             Expanded(
                               child: Text(
                                 data1[index].litaHan,
@@ -396,12 +403,12 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 8),
+                        const   SizedBox(height: 8),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text("Category:", style: Constant.textName),
-                            SizedBox(width: 8),
+                            const SizedBox(width: 8),
                             Expanded(
                               child: Text(
                                 data1[index].category,
@@ -410,17 +417,17 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 8),
+                        const  SizedBox(height: 8),
                         Row(
                           children: [
-                            CircleAvatar(
+                            const   CircleAvatar(
                               backgroundImage: AssetImage("assets/png/profile4.png"),
                               radius: 20,
                             ),
-                            SizedBox(width: 16),
+                            const   SizedBox(width: 16),
                             Expanded(
                               child: TextFormField(
-                                decoration: InputDecoration.collapsed(
+                                decoration:const InputDecoration.collapsed(
                                   hintText: "Add a comment...",
                                 ),
                                 style: Constant.currentJob,
@@ -428,17 +435,17 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 16),
+                        const  SizedBox(height: 16),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text("2 hrs ago", style: Constant.currentJob),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         Text(
                           data1[index].tags,
                           style: Constant.currentJob,
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                       ],
                     );
                   },
@@ -450,15 +457,15 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
 
 
 
-                Divider(color: MyColor.greyColor,),
+               const Divider(color: MyColor.greyColor,),
                 getVerticalSpace(3.h),
                 Container(
                   margin: EdgeInsets.only(right: 25.w,top: 1.h),
-                  padding: EdgeInsets.all(4),
+                  padding:const EdgeInsets.all(4),
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: MyColor.SearchColor.withOpacity(0.8) ),
                   child: Row(mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      CircleAvatar(backgroundImage: AssetImage("assets/png/profile2.png"),radius: 20,),
+                      const  CircleAvatar(backgroundImage: AssetImage("assets/png/profile2.png"),radius: 20,),
                       getHorizontalSpace(0.5.w),
                       Expanded(
                         child: Column(crossAxisAlignment: CrossAxisAlignment.start,
@@ -471,20 +478,20 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                     ],
                   ),
                 ),
-                Align(alignment:Alignment.centerLeft ,
+                const  Align(alignment:Alignment.centerLeft ,
                     child: Text("Agree 💯")),
                 Text("""It doesn’t matter how impressive your accomplishments are – potential customers will avoid you if you don’t seem like an appealing person to work with. That’s why showing your human side is one of the most important things you can do in your real estate Business."""
                   ,style:Constant.currentJob,),
                 getVerticalSpace(1.h),
                 Row(
                   children: [
-                    CircleAvatar(
+                    const    CircleAvatar(
                       backgroundImage: AssetImage("assets/png/profile4.png"),
                       radius: 20,
                     ),
                     getHorizontalSpace(1.w),
                     Expanded(
-                        child: TextFormField(decoration: InputDecoration.collapsed(hintText: "Add a comment..."),style: Constant.currentJob,))
+                        child: TextFormField(decoration:const InputDecoration.collapsed(hintText: "Add a comment..."),style: Constant.currentJob,))
                   ],
                 ),
                 getVerticalSpace(2.h),
@@ -496,7 +503,7 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                 Row(
                   children: [
                     GestureDetector(onTap:() {
-                      Get.to(()=>LikeScreen());
+                      Get.to(()=>const LikeScreen());
                     },
                       child: Container(
                         // margin: EdgeInsets.only(left: 1.5.h,),
@@ -514,7 +521,7 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                     getHorizontalSpace(1.w),
                     GestureDetector(
                       onTap: () {
-                        Get.to(()=>CommentScreen());
+                        Get.to(()=>const CommentScreen());
                       },
                       child: Container(
                         padding:  EdgeInsets.only(top: 1.3.h,bottom: 1.3.h,right: 1.h,left: 1.h),
@@ -528,9 +535,9 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                         ),
                       ),
                     ),
-                    Expanded(child: SizedBox()),
+                    const   Expanded(child: SizedBox()),
                     GestureDetector(onTap:() {
-                      Get.to(()=>ShareScreen());
+                      Get.to(()=>const ShareScreen());
                     },
                       child: Container(
                           margin: EdgeInsets.only(left: 1.h,),
@@ -542,7 +549,7 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                   ],
                 ),
 
-                Divider(color: MyColor.greyColor,),
+                const   Divider(color: MyColor.greyColor,),
               ],
             ),
           )

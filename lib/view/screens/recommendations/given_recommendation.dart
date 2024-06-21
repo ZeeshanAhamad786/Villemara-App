@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -9,7 +8,7 @@ import '../../../controller/custom_widgets/customtextfield.dart';
 import '../../../controller/custom_widgets/my_color.dart';
 import '../../../model/recommendation_model.dart';
 class GivenRecommendationScreen extends StatefulWidget {
-  const GivenRecommendationScreen({Key? key}) : super(key: key);
+  const GivenRecommendationScreen({super.key});
 
   @override
   State<GivenRecommendationScreen> createState() => _GivenRecommendationScreenState();

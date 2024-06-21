@@ -3,25 +3,25 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:villemara_app/controller/custom_widgets/constant.dart';
 import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 
-
-
-Widget getHorizontalSpace (double width){
-  return SizedBox(width: width,);
-}
-Widget getVerticalSpace (double height){
-  return SizedBox(height: height,);
+Widget getHorizontalSpace(double width) {
+  return SizedBox(
+    width: width,
+  );
 }
 
-
-
-
+Widget getVerticalSpace(double height) {
+  return SizedBox(
+    height: height,
+  );
+}
 
 class CustomFilter extends StatelessWidget {
   final String text;
   final IconData icon;
   final bool isSelected;
 
-  CustomFilter({required this.text, required this.icon, this.isSelected = false});
+  CustomFilter(
+      {required this.text, required this.icon, this.isSelected = false});
 
   @override
   Widget build(BuildContext context) {
@@ -31,39 +31,42 @@ class CustomFilter extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              text,style: Constant.textSearch,),
-
-            Icon(
-              icon,
-              color: isSelected ? Colors.black : Colors.white
+              text,
+              style: Constant.textSearch,
             ),
+            Icon(icon, color: isSelected ? Colors.black : Colors.white),
           ],
         ),
-        Divider(color: Colors.grey),
+        const Divider(color: Colors.grey),
       ],
     );
   }
 }
-Widget customTextField (String title,TextEditingController controller){
-  return  Container(
-      padding:
-      EdgeInsets.symmetric(horizontal: 2.2.h, vertical: 1.4.h),
+
+Widget customTextField(String title, TextEditingController controller,
+    {Color? hintColor, containerColor, borderColor,textColor, Widget? suffixIcon}) {
+  return Container(
       alignment: Alignment.centerLeft,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.h),
-          color: MyColor.buttonColor),
+          border: Border.all(color: borderColor ?? Colors.transparent),
+          color: containerColor ?? MyColor.buttonColor),
       child: TextFormField(
         controller: controller,
-        style:Constant.textSearch.copyWith(color: const Color(0xff828282)) ,
-
+        style: Constant.textSearch.copyWith(color:textColor?? const Color(0xff828282)),
+        cursorColor: Colors.white,
         decoration: InputDecoration(
-            isCollapsed: true,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.h),
-                borderSide: BorderSide.none),
-            hintText: title,
-            hintStyle: Constant.textSearch.copyWith(color: const Color(0xff828282))
+          contentPadding:
+              EdgeInsets.symmetric(horizontal: 1.4.h, vertical: 1.4.h),
 
+          isCollapsed: true,
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.h),
+              borderSide: BorderSide.none),
+          hintText: title,
+          hintStyle: Constant.textSearch
+              .copyWith(color: hintColor ?? const Color(0xff828282)),
+            suffixIcon:suffixIcon
         ),
-      )
-  );
+      ));
 }

@@ -142,7 +142,8 @@ class Constant {
   static TextStyle buttonText = TextStyle(
       fontSize: 12.px,
       fontWeight: FontWeight.w400,
-      color: MyColor.buttonTextColor);
+      color: MyColor.buttonTextColor,
+  fontFamily: 'medium');
   static TextStyle simpleText = TextStyle(
       fontSize: 12.px,
       fontWeight: FontWeight.w400,

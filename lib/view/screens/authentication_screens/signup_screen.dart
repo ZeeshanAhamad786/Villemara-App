@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -8,11 +9,16 @@ import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'package:villemara_app/view/screens/authentication_screens/login_screen.dart';
 
-import 'email_confirmation_screen.dart';
 import 'facerecognization_screen.dart';
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+   const SignUpScreen({super.key});
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +42,10 @@ class SignUpScreen extends StatelessWidget {
               Text(
                 "Registration",
                 textAlign: TextAlign.center,
-                style: Constant.buttonText
-                    .copyWith(fontSize: 18.px, fontWeight: FontWeight.w400),
+                style: Constant.buttonText.copyWith(
+                    fontSize: 18.px,
+                    fontWeight: FontWeight.w400,
+                    color: const Color(0xff444444)),
               ),
               getVerticalSpace(1.h),
               Text(
@@ -50,7 +58,12 @@ class SignUpScreen extends StatelessWidget {
               ),
               getVerticalSpace(3.h),
               CustomTextFormField(
-                  hintText: 'Name',
+                  hintText: 'First Name',
+                  prefixIcon: SvgPicture.asset('assets/svg/nameicon.svg'),
+                  readOnly: false),
+              getVerticalSpace(2.h),
+              CustomTextFormField(
+                  hintText: 'Last Name',
                   prefixIcon: SvgPicture.asset('assets/svg/nameicon.svg'),
                   readOnly: false),
               getVerticalSpace(2.h),
@@ -74,12 +87,11 @@ class SignUpScreen extends StatelessWidget {
               CustomTextFormField(
                   hintText: 'Company House No.',
                   prefixIcon: SvgPicture.asset('assets/svg/company.svg'),
-
                   readOnly: false),
               getVerticalSpace(2.h),
               GestureDetector(
                 onTap: () {
-                 Get.to(()=>const FaceRecognization());
+                  Get.to(() => const FaceRecognization());
                 },
                 child: Container(
                   padding:
@@ -144,7 +156,8 @@ class SignUpScreen extends StatelessWidget {
                           fontFamily: 'bold',
                           color: const Color(0xff1E1E1E)))
                 ])),
-              )
+              ),
+              getVerticalSpace(3.h)
             ],
           ),
         ),
@@ -152,55 +165,55 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  void showAlertDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return Center(
-          child: Material(
-            color: Colors.transparent, // Transparent background for Material
-            child: Container(
-              height: 43.h,
-              width: 33.2.h,
-              padding: EdgeInsets.symmetric(horizontal: 4.4.h, vertical: 2.8.h),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(3.5.h),
-                color: Colors.white,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "Fingerprint Authentication",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: const Color(0xff444444),
-                      fontSize: 18.px,
-                      fontFamily: 'medium',
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  getVerticalSpace(1.h),
-                  Text(
-                    'Hold on to your mobile fingerprint sensor to activate.',
-                    textAlign: TextAlign.center,
-                    style: Constant.buttonText.copyWith(
-                        color: const Color(0xff717171),
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'regular'),
-                  ),
-                  getVerticalSpace(3.h),
-                  GestureDetector(
-                      onTap: () {
-                        Get.to(() => const EmailConfirmation());
-                      },
-                      child: SvgPicture.asset('assets/svg/finger.svg'))
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
+  // void showAlertDialog(BuildContext context) {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return Center(
+  //         child: Material(
+  //           color: Colors.transparent, // Transparent background for Material
+  //           child: Container(
+  //             height: 43.h,
+  //             width: 33.2.h,
+  //             padding: EdgeInsets.symmetric(horizontal: 4.4.h, vertical: 2.8.h),
+  //             decoration: BoxDecoration(
+  //               borderRadius: BorderRadius.circular(3.5.h),
+  //               color: Colors.white,
+  //             ),
+  //             child: Column(
+  //               crossAxisAlignment: CrossAxisAlignment.center,
+  //               children: [
+  //                 Text(
+  //                   "Fingerprint Authentication",
+  //                   textAlign: TextAlign.center,
+  //                   style: TextStyle(
+  //                     color: const Color(0xff444444),
+  //                     fontSize: 18.px,
+  //                     fontFamily: 'medium',
+  //                     fontWeight: FontWeight.w400,
+  //                   ),
+  //                 ),
+  //                 getVerticalSpace(1.h),
+  //                 Text(
+  //                   'Hold on to your mobile fingerprint sensor to activate.',
+  //                   textAlign: TextAlign.center,
+  //                   style: Constant.buttonText.copyWith(
+  //                       color: const Color(0xff717171),
+  //                       fontWeight: FontWeight.w600,
+  //                       fontFamily: 'regular'),
+  //                 ),
+  //                 getVerticalSpace(3.h),
+  //                 GestureDetector(
+  //                     onTap: () {
+  //                       Get.to(() => const EmailConfirmation());
+  //                     },
+  //                     child: SvgPicture.asset('assets/svg/finger.svg'))
+  //               ],
+  //             ),
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 }

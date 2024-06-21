@@ -1,9 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:villemara_app/controller/custom_widgets/constant.dart';
 import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
+
+import 'add_new_experience.dart';
 
 class Experiences extends StatelessWidget {
   const Experiences({super.key});
@@ -41,28 +44,33 @@ class Experiences extends StatelessWidget {
                         fontSize: 18.px),
                   ),
                   const Expanded(child: SizedBox()),
-                  Container(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: .6.h, vertical: .6.h),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.h),
-                        color: Colors.transparent,
-                        border: Border.all(color: const Color(0xff1E1E1E))),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.add,
-                          size: 1.8.h,
-                        ),
-                        Text(
-                          'Add New',
-                          style: TextStyle(
-                              color: const Color(0xff1E1E1E),
-                              fontFamily: 'medium',
-                              fontSize: 10.px,
-                              fontWeight: FontWeight.w400),
-                        )
-                      ],
+                  GestureDetector(onTap: ()
+                  {
+                    Get.to(()=>AddNewExperience());
+                  },
+                    child: Container(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: .6.h, vertical: .6.h),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5.h),
+                          color: Colors.transparent,
+                          border: Border.all(color: const Color(0xff1E1E1E))),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.add,
+                            size: 1.8.h,
+                          ),
+                          Text(
+                            'Add New',
+                            style: TextStyle(
+                                color: const Color(0xff1E1E1E),
+                                fontFamily: 'medium',
+                                fontSize: 10.px,
+                                fontWeight: FontWeight.w400),
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],

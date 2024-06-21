@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:face_camera/face_camera.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -7,8 +10,27 @@ import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import '../../../controller/custom_widgets/constant.dart';
 import 'email_confirmation_screen.dart';
 
-class FaceRecognization extends StatelessWidget {
+class FaceRecognization extends StatefulWidget {
   const FaceRecognization({super.key});
+
+  @override
+  State<FaceRecognization> createState() => _FaceRecognizationState();
+}
+
+class _FaceRecognizationState extends State<FaceRecognization> {
+  late FaceCameraController controller;
+
+  @override
+  void initState() {
+    controller = FaceCameraController(
+      autoCapture: true,
+      defaultCameraLens: CameraLens.front,
+      onCapture: (File? image) {
+
+      },
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +69,19 @@ class FaceRecognization extends StatelessWidget {
               ],
             ),
             getVerticalSpace(5.6.h),
-            const Image(image: AssetImage('assets/png/facecheck.png')),
+            Container(height: 300,width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5.h),
+            ),
+            child: SmartFaceCamera(controller: controller,
+              message: 'Center your face in the square',
+              autoDisableCaptureControl: true,
+              showCaptureControl: false,
+              showCameraLensControl: false,
+              showFlashControl: false,
+              
+            ),),
+            // const Image(image: AssetImage('assets/png/facecheck.png')),
             getVerticalSpace(2.4.h),
             // Text(
             //   "Hold your face In-front of camera",

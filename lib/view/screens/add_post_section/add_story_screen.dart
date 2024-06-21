@@ -8,7 +8,7 @@ import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'package:villemara_app/view/screens/add_post_section/play_story_screen.dart';
 
-import 'live_stream_screen.dart';
+import 'live_stream1.dart';
 
 class AddStoryScreen extends StatelessWidget {
   AddStoryScreen({super.key});
@@ -73,7 +73,7 @@ class AddStoryScreen extends StatelessWidget {
                         padding: EdgeInsets.symmetric(horizontal: 2.2.h),
                         child: GestureDetector(onTap: (){
                           if(index==2){
-                            Get.to(()=>GoToLive());
+                            Get.to(()=>GoToLive1());
 
                           }
                         },

@@ -34,7 +34,7 @@ class LoginScreen extends StatelessWidget {
                     fontSize: 20.px,
                     fontWeight: FontWeight.w400,
                     color: const Color(0xff444444),
-                    fontFamily: 'bold'),
+                    fontFamily: 'medium'),
               ),
               getVerticalSpace(.6.h),
               Text(
@@ -61,7 +61,8 @@ class LoginScreen extends StatelessWidget {
               getVerticalSpace(2.h),
               CustomTextFormField(
                 hintText: 'Password',
-                prefixIcon: SvgPicture.asset('assets/svg/passwordicon.svg'),readOnly: false
+                prefixIcon: SvgPicture.asset('assets/svg/passwordicon.svg'),readOnly: false,
+                suffixIcon: SvgPicture.asset('assets/svg/eye-off.svg'),
               ),
               getVerticalSpace(1.h),
               Align(

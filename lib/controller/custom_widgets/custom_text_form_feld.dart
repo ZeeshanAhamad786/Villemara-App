@@ -39,7 +39,7 @@ class CustomTextFormField extends StatelessWidget {
         onTap:onTap ,
         keyboardType: phoneKeyboard == true ? TextInputType.phone : null,
         controller: controller,
-        style: Constant.buttonText.copyWith(color: const Color(0xffA7A7A7)),
+        style: Constant.buttonText.copyWith(color: const Color(0xff444444)),
         // controller: controller,
         obscureText: obscureText,
         cursorColor: Colors.black,

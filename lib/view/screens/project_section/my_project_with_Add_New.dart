@@ -46,7 +46,7 @@ class _MyProjectAddNewState extends State<MyProjectAddNew> {
               ),
               child: Row(
                 children: [
-                  Icon(Icons.add),
+                  const Icon(Icons.add),
                   Text("Add New", style: Constant.addNew),
                 ],
               ),
@@ -102,7 +102,7 @@ class _MyProjectAddNewState extends State<MyProjectAddNew> {
                             Expanded(
                               child: RichText(
                                   text: TextSpan(
-                                      style: TextStyle(color: Colors.black),
+                                      style: const TextStyle(color: Colors.black),
                                       children: [
                                         TextSpan(
                                             text: 'Description: ',

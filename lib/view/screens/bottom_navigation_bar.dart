@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:villemara_app/controller/custom_widgets/my_color.dart';
+import 'package:villemara_app/view/screens/profile_section/main_profile_screen.dart';
 
+import 'add_post_section/upload_posts_tabbar.dart';
 import 'blogs_secton/blogs_screen.dart';
 import 'chat_section/tab_bar.dart';
 import 'home_section/home_screen.dart';
@@ -22,12 +25,13 @@ class BottomNavigationScreenState extends State<BottomNavigationScreen> {
     const HomeScreen(),
     const ChatTabBar(),
     const BlogsScreen(),
-    const ProfileScreen(),
+    const MainProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      print(index);
     });
   }
 
@@ -42,7 +46,7 @@ class BottomNavigationScreenState extends State<BottomNavigationScreen> {
           backgroundColor:MyColor.blackBold,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onPressed: () {
-            // Action for Floating Button
+            Get.to(()=>const UploadPostsTabBar());
           },
           child: SvgPicture.asset("assets/svg/floatIcon.svg")
         ),
@@ -115,15 +119,3 @@ class BottomNavigationScreenState extends State<BottomNavigationScreen> {
 
 
 
-
-
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Profile Screen'),
-    );
-  }
-}

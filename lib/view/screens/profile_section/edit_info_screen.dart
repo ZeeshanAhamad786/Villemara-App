@@ -59,25 +59,39 @@ class EditInfoScreen extends StatelessWidget {
               ),
               getVerticalSpace(2.h),
               CustomTextFormField(
-                  hintText: 'Email',
-                  prefixIcon: SvgPicture.asset('assets/svg/emailicon.svg'),
+                  hintText: 'Company Name',
+                  prefixIcon: SvgPicture.asset('assets/svg/company.svg'),
                   readOnly: false),
               getVerticalSpace(2.h),
               CustomTextFormField(
-                onTap: (){
-                  Get.to(()=>const FingerPrintAuthentication());
-                },
-                  hintText: 'Add Fingerprint Authentication',
-                  prefixIcon: SvgPicture.asset('assets/svg/fngerprnt.svg'),
-                  suffixIcon: Text(
-                    'Update',
-                    style: TextStyle(
-                        fontSize: 33.px,
-                        fontFamily: 'medium',
-                        fontWeight: FontWeight.w400,
-                        color: const Color(0xff1E1E1E)),
-                  ),
-                  readOnly: true),
+                  hintText: 'Add link of your LinkedIn Account',
+                  prefixIcon: SvgPicture.asset('assets/svg/linkden.svg'),
+                  readOnly: false),
+              getVerticalSpace(2.h),
+              CustomTextFormField(
+                  hintText: 'Add link of your Instagram Account',
+                  prefixIcon: SvgPicture.asset('assets/svg/Instagram.svg'),
+                  readOnly: false),
+              getVerticalSpace(2.h),
+              CustomTextFormField(
+                  hintText: 'Add link of your Facebook Account',
+                  prefixIcon: SvgPicture.asset('assets/svg/facebook.svg'),
+                  readOnly: false),
+              // CustomTextFormField(
+              //   onTap: (){
+              //     Get.to(()=>const FingerPrintAuthentication());
+              //   },
+              //     hintText: 'Add Fingerprint Authentication',
+              //     prefixIcon: SvgPicture.asset('assets/svg/fngerprnt.svg'),
+              //     suffixIcon: Text(
+              //       'Update',
+              //       style: TextStyle(
+              //           fontSize: 33.px,
+              //           fontFamily: 'medium',
+              //           fontWeight: FontWeight.w400,
+              //           color: const Color(0xff1E1E1E)),
+              //     ),
+              //     readOnly: true),
               getVerticalSpace(2.h),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 2.h, vertical: 1.9.h),

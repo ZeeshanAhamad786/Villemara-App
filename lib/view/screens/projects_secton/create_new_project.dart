@@ -152,6 +152,7 @@ class CreateNewProject extends StatelessWidget {
             getVerticalSpace(4.h),
             GestureDetector(
               onTap: () {
+                Get.back();
               },
               child: Container(margin: EdgeInsets.symmetric(horizontal: 2.h),
                 padding:

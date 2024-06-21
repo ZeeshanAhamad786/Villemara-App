@@ -146,7 +146,7 @@ class _PostScreenState extends State<PostScreen> {
                       ),
                       getHorizontalSpace(1.w),
                       Expanded(
-                          child: TextFormField(decoration: InputDecoration.collapsed(hintText: "Add a comment..."),style: Constant.textSearch,))
+                          child: TextFormField(decoration: const InputDecoration.collapsed(hintText: "Add a comment..."),style: Constant.textSearch,))
                     ],
                   ),
                   getVerticalSpace(2.h),
@@ -157,15 +157,15 @@ class _PostScreenState extends State<PostScreen> {
                 ],);
           }),
 
-          Divider(color: MyColor.greyColor,),
+          const Divider(color: MyColor.greyColor,),
           getVerticalSpace(3.h),
           Container(
             margin: EdgeInsets.only(left: 1.h,right: 25.w,top: 1.h),
-            padding: EdgeInsets.all(4),
+            padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: MyColor.SearchColor.withOpacity(0.8) ),
             child: Row(mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                CircleAvatar(backgroundImage: AssetImage("assets/png/profile2.png"),radius: 20,),
+                const CircleAvatar(backgroundImage: AssetImage("assets/png/profile2.png"),radius: 20,),
                 getHorizontalSpace(0.5.w),
                 Expanded(
                   child: Column(crossAxisAlignment: CrossAxisAlignment.start,
@@ -178,20 +178,20 @@ class _PostScreenState extends State<PostScreen> {
               ],
             ),
           ),
-          Align(alignment:Alignment.centerLeft ,
+          const Align(alignment:Alignment.centerLeft ,
               child: Text("Agree 💯")),
           Text("""It doesn’t matter how impressive your accomplishments are – potential customers will avoid you if you don’t seem like an appealing person to work with. That’s why showing your human side is one of the most important things you can do in your real estate Business."""
             ,style:Constant.textDesc,),
           getVerticalSpace(1.h),
           Row(
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 backgroundImage: AssetImage("assets/png/profile4.png"),
                 radius: 20,
               ),
               getHorizontalSpace(1.w),
               Expanded(
-                  child: TextFormField(decoration: InputDecoration.collapsed(hintText: "Add a comment..."),style: Constant.textSearch,))
+                  child: TextFormField(decoration: const InputDecoration.collapsed(hintText: "Add a comment..."),style: Constant.textSearch,))
             ],
           ),
           getVerticalSpace(2.h),
@@ -203,7 +203,7 @@ class _PostScreenState extends State<PostScreen> {
           Row(
             children: [
               GestureDetector(onTap:() {
-                Get.to(()=>LikeScreen());
+                Get.to(()=>const LikeScreen());
               },
                 child: Container(
                   // margin: EdgeInsets.only(left: 1.5.h,),
@@ -221,7 +221,7 @@ class _PostScreenState extends State<PostScreen> {
               getHorizontalSpace(1.w),
               GestureDetector(
                 onTap: () {
-                  Get.to(()=>CommentScreen());
+                  Get.to(()=>const CommentScreen());
                 },
                 child: Container(
                   padding:  EdgeInsets.only(top: 1.3.h,bottom: 1.3.h,right: 1.h,left: 1.h),
@@ -235,9 +235,9 @@ class _PostScreenState extends State<PostScreen> {
                   ),
                 ),
               ),
-              Expanded(child: SizedBox()),
+              const Expanded(child: SizedBox()),
               GestureDetector(onTap:() {
-                Get.to(()=>ShareScreen());
+                Get.to(()=>const ShareScreen());
               },
                 child: Container(
                     margin: EdgeInsets.only(left: 1.h,),
@@ -249,7 +249,8 @@ class _PostScreenState extends State<PostScreen> {
             ],
           ),
         
-          Divider(color: MyColor.greyColor,),
+          const Divider(color: MyColor.greyColor,),
+          getVerticalSpace(6.h),
         ],),
       ),
     );

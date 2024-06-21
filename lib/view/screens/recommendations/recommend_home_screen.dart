@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:villemara_app/view/screens/recommendations/received_recommendation.dart';
 import '../../../controller/custom_widgets/constant.dart';
 import '../../../controller/custom_widgets/customtextfield.dart';
 import '../../../controller/custom_widgets/my_color.dart';
+import 'give_recommendation_screen.dart';
 import 'given_recommendation.dart';
 class RecommendHomeScreen extends StatefulWidget {
-  const RecommendHomeScreen({Key? key}) : super(key: key);
+  const RecommendHomeScreen({super.key});
 
   @override
   State<RecommendHomeScreen> createState() => _RecommendHomeScreenState();
@@ -29,9 +29,39 @@ class _RecommendHomeScreenState extends State<RecommendHomeScreen> {
               Get.back();
             },
                 child: Icon(Icons.arrow_back_ios_new, size: 18.px)),
+            const Expanded(child: SizedBox()),
+
             Text("Recommendations", style: Constant.textLikes),
-            const SizedBox(height: 10, width: 10)
-          ],
+            const Expanded(child: SizedBox()),
+            GestureDetector(onTap: ()
+            {
+              Get.to(()=>const GiveRecommendationScreen());
+            },
+              child: Container(
+                padding:
+                EdgeInsets.symmetric(horizontal: .6.h, vertical: .6.h),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.h),
+                    color: Colors.transparent,
+                    border: Border.all(color: const Color(0xff1E1E1E))),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.add,
+                      size: 1.8.h,
+                    ),
+                    Text(
+                      'Add New',
+                      style: TextStyle(
+                          color: const Color(0xff1E1E1E),
+                          fontFamily: 'medium',
+                          fontSize: 10.px,
+                          fontWeight: FontWeight.w400),
+                    )
+                  ],
+                ),
+              ),
+            )          ],
         ),
       ),
       body: SingleChildScrollView(
@@ -50,7 +80,7 @@ class _RecommendHomeScreenState extends State<RecommendHomeScreen> {
                       child: Container(
                         decoration: BoxDecoration(
                           color: selectedIndex.value == 0 ? Colors.black :MyColor.textDarkGrey,
-                          borderRadius: BorderRadius.only(
+                          borderRadius:const BorderRadius.only(
                             topLeft: Radius.circular(20),
                             bottomLeft: Radius.circular(20),
                           ),
@@ -75,7 +105,7 @@ class _RecommendHomeScreenState extends State<RecommendHomeScreen> {
 
                         decoration: BoxDecoration(
                           color: selectedIndex.value == 1 ? Colors.black : MyColor.textDarkGrey,
-                          borderRadius: BorderRadius.only(
+                          borderRadius:const BorderRadius.only(
                             topRight: Radius.circular(20),
                             bottomRight: Radius.circular(20),
                           ),
@@ -93,7 +123,7 @@ class _RecommendHomeScreenState extends State<RecommendHomeScreen> {
                     ),
                   ],
                 )),
-                Container(
+                SizedBox(
                   height: MediaQuery.of(context).size.height ,
                   child: Obx(() {
                     return selectedIndex.value == 0

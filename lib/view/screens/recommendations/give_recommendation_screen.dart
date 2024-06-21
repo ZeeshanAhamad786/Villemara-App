@@ -1,16 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 
 import '../../../controller/custom_widgets/constant.dart';
 class GiveRecommendationScreen extends StatelessWidget {
-  const GiveRecommendationScreen({Key? key}) : super(key: key);
+  const GiveRecommendationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController descriptionController=TextEditingController();
+    final TextEditingController membersNameController=TextEditingController();
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -30,25 +32,19 @@ class GiveRecommendationScreen extends StatelessWidget {
         padding:  EdgeInsets.symmetric(horizontal: 3.h),
         child: Column(children: [
           getVerticalSpace(3.h),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 3.h,vertical: 4.w),
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: MyColor.buttonColor),
-            child: Text("Member Name(Choose member)"),
-          ),
+          customTextField('Member Name(Choose member)', membersNameController),
           getVerticalSpace(3.h),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 3.h,vertical: 4.w),
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: MyColor.buttonColor),
-            child: Text("Member Name(Choose member)"),
-          ),
+         customTextField('Write Something.....', descriptionController),
           getVerticalSpace(6.h),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 3.h,vertical: 4.w),
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: MyColor.blackBoldColor),
-            child: Center(child: Text("Done",style: TextStyle(color: Colors.white),)),
+          GestureDetector(onTap: (){
+            Get.back();
+          },
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 3.h,vertical: 4.w),
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),color: MyColor.blackBoldColor),
+              child: const Center(child: Text("Done",style: TextStyle(color: Colors.white),)),
+            ),
           )
         ],),
       ),

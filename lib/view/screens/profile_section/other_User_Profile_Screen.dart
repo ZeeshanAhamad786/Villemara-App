@@ -216,7 +216,6 @@ class _OtherUserProfileScreenState extends State<OtherUserProfileScreen> {
                             ),
                           ),
                         ),
-
                         Positioned(
                           bottom: 8,
                           left: 10.h,

@@ -73,6 +73,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   readOnly: false),
               getVerticalSpace(2.h),
               CustomTextFormField(
+                  hintText: 'Confirm Email',
+                  prefixIcon: SvgPicture.asset('assets/svg/emailicon.svg'),
+                  readOnly: false),
+              getVerticalSpace(2.h),
+              CustomTextFormField(
                   hintText: 'Password',
                   prefixIcon: SvgPicture.asset('assets/svg/passwordicon.svg'),
                   suffixIcon: SvgPicture.asset('assets/svg/eye-off.svg'),
@@ -110,7 +115,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             color: const Color(0xffA7A7A7),
                             fontWeight: FontWeight.w400,
                             fontSize: 12.px),
-                      )
+                      ),
+                      Spacer(),
+                      Icon(Icons.arrow_forward_ios_rounded,size: 14.px,)
                     ],
                   ),
                 ),

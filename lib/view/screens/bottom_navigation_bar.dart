@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'package:villemara_app/view/screens/profile_section/main_profile_screen.dart';
+import 'package:villemara_app/view/screens/profile_section/new_main_profile_screen.dart';
 
 import 'add_post_section/upload_posts_tabbar.dart';
 import 'blogs_secton/blogs_screen.dart';
@@ -25,7 +26,7 @@ class BottomNavigationScreenState extends State<BottomNavigationScreen> {
     const HomeScreen(),
     const ChatTabBar(),
     const BlogsScreen(),
-    const MainProfileScreen(),
+    const NewMainProfileScreen(),
   ];
 
   void _onItemTapped(int index) {

@@ -23,7 +23,7 @@ class GiveRecommendationScreen extends StatelessWidget {
               Get.back();
             },
                 child: Icon(Icons.arrow_back_ios_new, size: 18.px)),
-            Text("Recommendations", style: Constant.textLikes),
+            Text("Appreciations", style: Constant.textLikes),
             const SizedBox(height: 10, width: 10)
           ],
         ),

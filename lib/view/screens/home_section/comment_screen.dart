@@ -74,12 +74,12 @@ class _CommentScreenState extends State<CommentScreen> {
                                       children: [
                                         Text(data[index].name, style: Constant.textLikeName,),
                                         getHorizontalSpace(1.w),
-                                        Text(data[index].time, style: Constant.textLikeName,),
+                                        Text(data[index].time, style: Constant.commentsTime,),
                                       ],
                                     ),
-                                    Text(data[index].nameDescription),
-                                    Text(data[index].reply),
-                                    Text(data[index].allReply),
+                                    Text(data[index].nameDescription,style: Constant.commentsDesc,),
+                                    Text(data[index].reply,style: Constant.commentsReply,),
+                                    Text(data[index].allReply,style: Constant.commentsReply,),
                                   ],
                                 ))
                           ],

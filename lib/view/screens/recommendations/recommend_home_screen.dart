@@ -31,7 +31,7 @@ class _RecommendHomeScreenState extends State<RecommendHomeScreen> {
                 child: Icon(Icons.arrow_back_ios_new, size: 18.px)),
             const Expanded(child: SizedBox()),
 
-            Text("Recommendations", style: Constant.textLikes),
+            Text("Appreciations", style: Constant.textLikes),
             const Expanded(child: SizedBox()),
             GestureDetector(onTap: ()
             {

@@ -80,7 +80,7 @@ class _LikeScreenState extends State<LikeScreen> {
                         getHorizontalSpace(2.h),
                         // Expanded(
                         //     child: TextFormField(decoration: InputDecoration.collapsed(hintText: data1[index]),style: Constant.textLikeName,))
-                      Text(data1[index],style: TextStyle(fontFamily: 'medium',color: const Color(0xff444444),fontSize: 16.px,fontWeight: FontWeight.w400),)
+                      Text(data1[index],style: TextStyle(fontFamily: 'medium',color: const Color(0xff444444),fontSize: 14.px,fontWeight: FontWeight.w400),)
                       ],
                     ),
                     const Divider(color: MyColor.dividerColor),

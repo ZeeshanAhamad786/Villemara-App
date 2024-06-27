@@ -52,59 +52,63 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColor.white,
-      body: SingleChildScrollView(
-        child: Column(children: [
-          Stack(children: [
-            Image.asset("assets/png/glassesBackground.png"),
-            Positioned(bottom: 0,
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                padding:EdgeInsets.only(right: 3.w,left: 2.w,top: 2.w,bottom: 1.w) ,
-                decoration: BoxDecoration(borderRadius:const BorderRadius.only(topRight: Radius.circular(10)),color: Colors.white.withOpacity(0.58)),
-                child: Column(
-                  children: [
-                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Lita Han",style: Constant.milkTate,),
-                        GestureDetector(onTap: (){
-                          Get.to(()=>const EditInfoScreen());
-                        },
-                            child: SvgPicture.asset("assets/svg/write.svg",)),
-                        // getHorizontalSpace(1.w),
-                        // Text("Say Hi",style: Constant.sayHi,),
-                      ],
-                    ),
-                    getVerticalSpace(1.w),
-                    Text("Taxes Real Estate Broker | Managing Broker | Principal Broker",style: Constant.sayHi),
-                    getVerticalSpace(1.w),
-                    Row(mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SvgPicture.asset("assets/svg/linkden.svg"),
-                        getHorizontalSpace(1.w),
-                        SvgPicture.asset("assets/svg/Instagram.svg"),
-                        getHorizontalSpace(1.w),
-                        SvgPicture.asset("assets/svg/facebook.svg"),
-                      ],
-                    )
-                  ],
-                ),
-              ),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.white,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GestureDetector(
+              onTap: () {
+                Get.back();
+              },
+              child: Icon(Icons.arrow_back_ios_new, size: 18.px),
             ),
-        Positioned(top: 6.h,right: 5.h,
-          child: Container(
-            padding:EdgeInsets.only(right: 3.w,left: 3.w,top: 3.w,bottom: 3.w) ,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),
-                color: Colors.white.withOpacity(0.58)),
-            child: SvgPicture.asset("assets/svg/cameraIcon.svg")
-          ))
-           ],
+            Text("Profile", style: Constant.projectTitle),
+         SizedBox(height: 20,width: 20,)
 
-          ),
-          getVerticalSpace(3.h),
-          Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 2.h),
-            child: Column(
+          ],
+        ),
+      ),
+
+      body: SingleChildScrollView(
+        child: Padding(
+          padding:  EdgeInsets.symmetric(horizontal: 2.h),
+          child: Column(children: [
+            getVerticalSpace(2.h),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Lita Han",style: Constant.milkTate,),
+                Spacer(),
+                Image.asset("assets/png/sayHi.png"),
+                getHorizontalSpace(2.w),
+                Text("Say Hi",style: Constant.sayHi,),
+              ],
+            ),
+            getVerticalSpace(1.w),
+            Text("Taxes Real Estate Broker | Managing Broker | Principal Broker",style: Constant.sayHi),
+            getVerticalSpace(3.w),
+            Align(alignment: Alignment.centerLeft,
+                child: Text("Golden Globe Properties",style: Constant.litaEmail)),
+            getVerticalSpace(2.w),
+            Row(mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SvgPicture.asset("assets/svg/linkden.svg"),
+                getHorizontalSpace(1.5.w),
+                SvgPicture.asset("assets/svg/Instagram.svg"),
+                getHorizontalSpace(1.5.w),
+                SvgPicture.asset("assets/svg/facebook.svg"),
+                Spacer(),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 3.w,vertical: 2.w),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: MyColor.blackBoldColor.withOpacity(0.7),),
+                  child: Text("Book Appoinment",style: Constant.whiteBook,),
+                )
+              ],
+            ),
+            getVerticalSpace(3.h),
+            Column(
               children: [
                 Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -179,7 +183,7 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                 getVerticalSpace(2.5.h),
                 Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Recommendations",style: Constant.projects,),
+                    Text("Appreciations",style: Constant.projects,),
                     GestureDetector(onTap: (){
                       Get.to(()=>const RecommendHomeScreen());
                     },
@@ -239,7 +243,7 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                     }),
 
 
-////
+            ////
                 getVerticalSpace(2.h),
                 ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
@@ -450,13 +454,6 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
                     );
                   },
                 ),
-
-
-
-
-
-
-
                const Divider(color: MyColor.greyColor,),
                 getVerticalSpace(3.h),
                 Container(
@@ -551,9 +548,9 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
 
                 const   Divider(color: MyColor.greyColor,),
               ],
-            ),
-          )
-        ],),
+            )
+          ],),
+        ),
       ),
     );
   }

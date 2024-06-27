@@ -65,11 +65,11 @@ class _ShareScreenState extends State<ShareScreen> {
                        ListTile(
                          title: Text(
                            items[index].name,
-                           // style: CustomTextStyle.mediumTextTitle,
+                           style: Constant.projectDesc,
                          ),
                          subtitle: Text(
                            items[index].title,
-                           // style: CustomTextStyle.mediumTextSubtitle,
+                           style: Constant.projectDescTitle,
                          ),
                          leading: CircleAvatar(
                            maxRadius: 30,

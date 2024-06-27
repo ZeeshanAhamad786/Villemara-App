@@ -158,7 +158,7 @@ class Constant {
       color: MyColor.blackBoldColor,fontFamily: "bold");
   static TextStyle sayHi = TextStyle(
       fontSize: 12.px,
-      fontWeight: FontWeight.w300,
+      fontWeight: FontWeight.w400,
       color: MyColor.blackBoldColor,fontFamily: "regular");
   static TextStyle litaEmail = TextStyle(
       fontSize: 10.px,
@@ -189,5 +189,21 @@ class Constant {
       fontWeight: FontWeight.w400,
       color: MyColor.blackBoldColor,
       fontFamily: "regular");
+  static TextStyle whiteBook = TextStyle(fontSize: 8.px,
+      fontWeight: FontWeight.w400,
+      color: MyColor.white,
+      fontFamily: "regular");
+  static TextStyle projectDescTitle = TextStyle(fontSize: 10.px,
+      fontWeight: FontWeight.w400,
+      color: MyColor.blackBoldColor,fontFamily: "medium");
+  static TextStyle commentsReply = TextStyle(fontSize: 10.px,
+      fontWeight: FontWeight.w400,
+      color: MyColor.blackBoldColor.withOpacity(0.6),fontFamily: "medium");
+  static TextStyle commentsDesc = TextStyle(fontSize: 10.px,
+      fontWeight: FontWeight.w400,
+      color: MyColor.choosePerson,fontFamily: "medium");
+  static TextStyle commentsTime = TextStyle(fontSize: 10.px,
+      fontWeight: FontWeight.w400,
+      color: MyColor.textTime,fontFamily: "medium");
 
 }

@@ -39,7 +39,6 @@ class _ReceivedRecommendationScreenState extends State<ReceivedRecommendationScr
             child: ListView.builder(
                 padding: EdgeInsets.zero,
                 physics: const BouncingScrollPhysics(),
-
                 shrinkWrap: true,
                 itemCount: recommendData.length,
                 itemBuilder: (context,index){

@@ -58,7 +58,7 @@ class _LikeScreenState extends State<LikeScreen> {
         child: Column(children: [
           Row(mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset("assets/svg/heart.svg"),
+              Image.asset("assets/png/thumb.png"),
               getHorizontalSpace(.4.w),
               const Text("100"),
             ],

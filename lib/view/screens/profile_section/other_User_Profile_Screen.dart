@@ -321,13 +321,6 @@ class _OtherUserProfileScreenState extends State<OtherUserProfileScreen> {
                 );
               },
             ),
-
-
-
-
-
-
-
             Divider(color: MyColor.greyColor,),
                 getVerticalSpace(3.h),
                 Container(

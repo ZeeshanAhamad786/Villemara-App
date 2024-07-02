@@ -116,10 +116,8 @@ class _ListingsScreenState extends State<ListingsScreen> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    SvgPicture.asset(
-                                      "assets/svg/good.svg",
-                                      color: Colors.yellow,
-                                    ),
+                                    Image.asset(
+                                      "assets/png/thumb.png",),
                                     getHorizontalSpace(0.5.h),
                                     Text(
                                       "12K",
@@ -265,7 +263,7 @@ class _ListingsScreenState extends State<ListingsScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SvgPicture.asset("assets/svg/good.svg"),
+                        Image.asset("assets/png/thumb.png"),
                         getHorizontalSpace(0.5.h),
                         Text(
                           "12K",

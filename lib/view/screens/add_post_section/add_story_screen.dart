@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:villemara_app/controller/custom_widgets/constant.dart';
-import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
-import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'package:villemara_app/view/screens/add_post_section/play_story_screen.dart';
 
+import '../../../controller/utils/constant.dart';
+import '../../../controller/utils/customtextfield.dart';
+import '../../../controller/utils/my_color.dart';
 import 'live_stream1.dart';
 
 class AddStoryScreen extends StatelessWidget {

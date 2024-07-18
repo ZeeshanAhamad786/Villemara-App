@@ -28,6 +28,7 @@ class MyColor{
   static const Color textRed=Color(0XFFE51616);
   static const Color textDarkGrey=Color(0XFFE2E2E2);
   static const Color textTime=Color(0XFFE3E3E3);
+  static const Color textBlue=Color(0XFF2D9ED6);
 
 
 

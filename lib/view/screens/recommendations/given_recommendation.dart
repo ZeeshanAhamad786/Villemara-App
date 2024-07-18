@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:villemara_app/view/screens/recommendations/give_recommendation_screen.dart';
-
-import '../../../controller/custom_widgets/constant.dart';
-import '../../../controller/custom_widgets/customtextfield.dart';
-import '../../../controller/custom_widgets/my_color.dart';
+import '../../../controller/utils/constant.dart';
+import '../../../controller/utils/customtextfield.dart';
+import '../../../controller/utils/my_color.dart';
 import '../../../model/recommendation_model.dart';
 class GivenRecommendationScreen extends StatefulWidget {
   const GivenRecommendationScreen({super.key});

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:villemara_app/controller/custom_widgets/constant.dart';
-import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
-import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 
+import '../../../controller/utils/constant.dart';
+import '../../../controller/utils/customtextfield.dart';
+import '../../../controller/utils/my_color.dart';
 import 'add_story_screen.dart';
 
 class AddPostScreen extends StatelessWidget {

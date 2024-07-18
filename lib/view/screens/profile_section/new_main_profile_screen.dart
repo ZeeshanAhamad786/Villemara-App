@@ -6,9 +6,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:villemara_app/view/screens/profile_section/main_profile_screen.dart';
-
-import '../../../controller/custom_widgets/constant.dart';
-import '../../../controller/custom_widgets/customtextfield.dart';
+import '../../../controller/utils/constant.dart';
+import '../../../controller/utils/customtextfield.dart';
 import 'edit_info_screen.dart';
 class NewMainProfileScreen extends StatelessWidget {
   const NewMainProfileScreen({Key? key}) : super(key: key);

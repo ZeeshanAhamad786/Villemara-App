@@ -5,10 +5,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 import 'package:villemara_app/view/screens/project_section/project_screen.dart';
-import '../../../controller/custom_widgets/constant.dart';
-import '../../../controller/custom_widgets/my_color.dart';
+import 'package:villemara_app/view/screens/subscription/premium_subscription.dart';
+
+import '../../../controller/utils/constant.dart';
+import '../../../controller/utils/customtextfield.dart';
+import '../../../controller/utils/my_color.dart';
 import '../../../model/company_model.dart';
 import '../../../model/main_profile_model.dart';
 import '../../../model/recommendation_model.dart';
@@ -66,7 +68,11 @@ class _MainProfileScreenState extends State<MainProfileScreen> {
               child: Icon(Icons.arrow_back_ios_new, size: 18.px),
             ),
             Text("Profile", style: Constant.projectTitle),
-         SizedBox(height: 20,width: 20,)
+         GestureDetector(onTap: () {
+           Get.to(()=>const PremiumSubscription());
+         },
+             child: SvgPicture.asset("assets/svg/premiumStar.svg")),
+
 
           ],
         ),

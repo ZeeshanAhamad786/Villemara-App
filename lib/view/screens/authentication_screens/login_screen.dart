@@ -2,22 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:villemara_app/controller/custom_widgets/constant.dart';
-import 'package:villemara_app/controller/custom_widgets/custom_text_form_feld.dart';
-import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
-import 'package:villemara_app/controller/custom_widgets/my_color.dart';
+import 'package:villemara_app/controller/custom_button.dart';
+import 'package:villemara_app/controller/utils/validations.dart';
 import 'package:villemara_app/view/screens/authentication_screens/signup_screen.dart';
-import 'package:villemara_app/view/screens/bottom_navigation_bar.dart';
-
-import 'email_confirmation_screen.dart';
+import '../../../controller/getx_controllers/auth_controller.dart';
+import '../../../controller/utils/constant.dart';
+import '../../../controller/utils/custom_text_form_feld.dart';
+import '../../../controller/utils/customtextfield.dart';
+import '../../../controller/utils/my_color.dart';
 import 'forget_password_screen.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
-
+  LoginScreen({super.key});
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    final AuthController authController = Get.put(AuthController(context));
+    return  Scaffold(
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 4.7.h),
         height: MediaQuery.of(context).size.height,
@@ -55,13 +57,16 @@ class LoginScreen extends StatelessWidget {
               ),
               getVerticalSpace(3.h),
               CustomTextFormField(
-                hintText: 'Email',
-                prefixIcon: SvgPicture.asset('assets/svg/emailicon.svg'),readOnly: false
-              ),
+                  controller: emailController,
+                  hintText: 'Email',
+                  prefixIcon: SvgPicture.asset('assets/svg/emailicon.svg'),
+                  readOnly: false),
               getVerticalSpace(2.h),
               CustomTextFormField(
+                controller: passwordController,
                 hintText: 'Password',
-                prefixIcon: SvgPicture.asset('assets/svg/passwordicon.svg'),readOnly: false,
+                prefixIcon: SvgPicture.asset('assets/svg/passwordicon.svg'),
+                readOnly: false,
                 suffixIcon: SvgPicture.asset('assets/svg/eye-off.svg'),
               ),
               getVerticalSpace(1.h),
@@ -82,43 +87,61 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               getVerticalSpace(4.h),
-              GestureDetector(
+              Obx(() => authController.isLoading.value
+                  ? Center(child: CircularProgressIndicator(color: Colors.black))
+                  : GestureDetector(
                 onTap: () {
-                  Get.to(()=>const BottomNavigationScreen());
+                  String validationResult = Validations.handleLoginScreenError(
+                    emailController: emailController,
+                    passwordController: passwordController,
+                  );
+                  if (validationResult.isNotEmpty) {
+                    customScaffoldMessenger(context, validationResult);
+                  } else {
+                    authController.login(
+                      email: emailController.text,
+                      password: passwordController.text,
+                      context: context,
+                    );
+                  }
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 5.h, vertical: 1.1.h),
+                  padding: EdgeInsets.symmetric(horizontal: 5.h, vertical: 1.1.h),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      color: MyColor.blackBoldColor,
-                      borderRadius: BorderRadius.circular(10.h),
-                      border: Border.all(color: MyColor.blackBoldColor)),
+                    color: MyColor.blackBoldColor,
+                    borderRadius: BorderRadius.circular(10.h),
+                    border: Border.all(color: MyColor.blackBoldColor),
+                  ),
                   child: Text(
                     'Log In',
-                    style:
-                        Constant.buttonText.copyWith(color: Colors.white),
+                    style: Constant.buttonText.copyWith(color: Colors.white),
                   ),
                 ),
               ),
+              ),
               getVerticalSpace(4.h),
-              GestureDetector(onTap: (){
-                Get.to(()=>const SignUpScreen());
-              },
-                child: RichText(text: TextSpan(children: [
-                  TextSpan(text: 'Don’t have an account? ',style: TextStyle(
-                    fontWeight:FontWeight.w400 ,
-                     fontSize: 12.px,
-                    fontFamily: 'medium',
-                     color: const Color(0xff7A7A7A)
-                  )),
-                  TextSpan(text: 'Sign Up',style: TextStyle(
-                      fontWeight:FontWeight.w400 ,
-                      fontSize: 12.px,
-                      fontFamily: 'bold',
-                      color: const Color(0xff1E1E1E)
-                  ))
-                ])),
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => const SignUpScreen());
+                },
+                child: RichText(
+                    text: TextSpan(children: [
+                      TextSpan(
+                          text: 'Don’t have an account? ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12.px,
+                              fontFamily: 'medium',
+                              color: const Color(0xff7A7A7A))),
+                      TextSpan(
+                          text: 'Sign Up',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12.px,
+                              fontFamily: 'bold',
+                              color: const Color(0xff1E1E1E)))
+                    ])),
               )
             ],
           ),

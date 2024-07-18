@@ -205,5 +205,29 @@ class Constant {
   static TextStyle commentsTime = TextStyle(fontSize: 10.px,
       fontWeight: FontWeight.w400,
       color: MyColor.textTime,fontFamily: "medium");
+  static TextStyle basicPlan = TextStyle(fontSize: 12.px,
+      fontWeight: FontWeight.w500,
+      color: MyColor.blackBoldColor,fontFamily: "bold");
+  static TextStyle free = TextStyle(fontSize: 9.px,
+      fontWeight: FontWeight.w500,
+      color: MyColor.white,fontFamily: "regular");
+  static TextStyle planDesc = TextStyle(fontSize: 10.px,
+      fontWeight: FontWeight.w300,
+      color: MyColor.choosePerson,fontFamily: "regular");
+  static TextStyle text2h = TextStyle(
+      fontSize: 11.px,
+      fontWeight: FontWeight.w400,
+      color: MyColor.greyColor,
+      fontFamily: "medium");
+  static TextStyle tags = TextStyle(
+      fontSize: 12.px,
+      fontWeight: FontWeight.w400,
+      color: MyColor.greyColor,
+      fontFamily: "medium");
+  static TextStyle onlyDesc = TextStyle(
+      fontSize: 12.px,
+      fontWeight: FontWeight.w400,
+      color: MyColor.blackBold,
+      fontFamily: "medium");
 
 }

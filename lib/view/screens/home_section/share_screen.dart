@@ -3,11 +3,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'package:villemara_app/model/share_screen_model.dart';
 
-import '../../../controller/custom_widgets/constant.dart';
-import '../../../controller/custom_widgets/customtextfield.dart';
+import '../../../controller/utils/constant.dart';
+import '../../../controller/utils/customtextfield.dart';
+import '../../../controller/utils/my_color.dart';
+
 class ShareScreen extends StatefulWidget {
   const ShareScreen({super.key});
 

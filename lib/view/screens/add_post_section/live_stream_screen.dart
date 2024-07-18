@@ -3,10 +3,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:story_view/controller/story_controller.dart';
-import 'package:villemara_app/controller/custom_widgets/constant.dart';
-import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 import 'package:villemara_app/view/screens/add_post_section/live_watchings_screen.dart';
 
+import '../../../controller/utils/constant.dart';
+import '../../../controller/utils/customtextfield.dart';
 import 'live_stream1.dart';
 
 class GoToLive extends StatefulWidget {

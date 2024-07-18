@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:villemara_app/controller/custom_widgets/constant.dart';
-import 'package:villemara_app/controller/custom_widgets/my_color.dart';
+
+import 'constant.dart';
+import 'my_color.dart';
 
 Widget getHorizontalSpace(double width) {
   return SizedBox(
@@ -69,4 +70,48 @@ Widget customTextField(String title, TextEditingController controller,
             suffixIcon:suffixIcon
         ),
       ));
+}
+
+Widget customTextFormField({
+  String? title,
+  TextEditingController? controller,
+  TextInputType? keyboardType,
+  int? maxLine,
+  String? errorText,
+  Color? focusBorderColor,
+  Color? bgColor,
+  Color? borderColor,
+}) {
+  return TextFormField(
+    maxLines: maxLine,
+    keyboardType: keyboardType,
+    controller: controller,
+    decoration: InputDecoration(
+      hintText: title,
+      // hintStyle: CustomTextStyles.hintTextStyle,
+      isCollapsed: true,
+      labelText: errorText,
+      labelStyle: TextStyle(
+        fontSize: 15.sp,
+        color: const Color(0xff808080),
+        fontWeight: FontWeight.w400,
+        fontFamily: 'regular',
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: focusBorderColor ?? Colors.transparent),
+        borderRadius: BorderRadius.circular(1.h),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide:  BorderSide(color:borderColor?? Colors.transparent),
+        borderRadius: BorderRadius.circular(1.h),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(1.h),
+        borderSide: const BorderSide(color: Colors.transparent),
+      ),
+      filled: true,
+      fillColor: bgColor ?? MyColor.choosePerson,
+      contentPadding: EdgeInsets.symmetric(horizontal: 1.6.h, vertical: 1.h),
+    ),
+  );
 }

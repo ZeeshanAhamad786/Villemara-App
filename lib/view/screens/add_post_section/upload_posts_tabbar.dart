@@ -1,17 +1,41 @@
+import 'dart:io';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:villemara_app/controller/custom_widgets/constant.dart';
-import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
-import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 
+import '../../../controller/getx_controllers/auth_controller.dart';
+import '../../../controller/utils/constant.dart';
+import '../../../controller/utils/customtextfield.dart';
+import '../../../controller/utils/image_pick_controller.dart';
+import '../../../controller/utils/my_color.dart';
 import 'live_stream1.dart';
 
-class UploadPostsTabBar extends StatelessWidget {
+class UploadPostsTabBar extends StatefulWidget {
   const UploadPostsTabBar({super.key});
 
+  @override
+  State<UploadPostsTabBar> createState() => _UploadPostsTabBarState();
+}
+
+class _UploadPostsTabBarState extends State<UploadPostsTabBar> {
+  final ImagePickerController imagePickerController = Get.put(ImagePickerController());
+  late AuthController authController;
+  final TextEditingController thoughtsController = TextEditingController();
+  final TextEditingController locationController = TextEditingController();
+  final TextEditingController tagSomeoneController = TextEditingController();
+  final TextEditingController addTagController = TextEditingController();
+ RxBool isImageSelected=false.obs;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    authController = Get.put(AuthController(context));
+  }
   @override
   Widget build(BuildContext context) {
     final RxList<String> mediaName = <String>['Image', 'Video', 'Go Live'].obs;
@@ -30,9 +54,7 @@ class UploadPostsTabBar extends StatelessWidget {
       'assets/svg/play.svg',
       'assets/svg/golive.svg'
     ].obs;
-    final TextEditingController locationController = TextEditingController();
-    final TextEditingController tagSomeoneController = TextEditingController();
-    final TextEditingController addTagController = TextEditingController();
+
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 3.h),
@@ -142,6 +164,7 @@ class UploadPostsTabBar extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(10.h),
                                       color: MyColor.buttonColor),
                                   child: TextFormField(
+                                    controller:thoughtsController ,
                                     decoration: InputDecoration(
                                         border: OutlineInputBorder(
                                           borderRadius:
@@ -157,58 +180,92 @@ class UploadPostsTabBar extends StatelessWidget {
                                                 fontWeight: FontWeight.w400)),
                                   )),
                               getVerticalSpace(2.h),
-                              SizedBox(
-                                height: 8.h,
-                                child: ListView.builder(
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  padding: EdgeInsets.zero,
-                                  itemCount: imagesList.length,
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.horizontal,
-                                  itemBuilder: (context, index) {
-                                    return Padding(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 2.h),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(
-                                            0.8.h), // 10% of the height (8.h)
-                                        child: GestureDetector(onTap:(){
-                                          if(index==2){
-                                            Get.to(()=>GoToLive1());
-                                          }
-                                        } ,
-                                          child: DottedBorder(
-                                            dashPattern: const [10, 10],
-                                            color: MyColor.blackBoldColor,
-                                            strokeWidth: 3,
-                                            borderType: BorderType.RRect,
-                                            radius: Radius.circular(
-                                                1.8.h), // 10% of the height (8.h)
-                                            child: Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 2.2.h,
-                                                  vertical: 1.h),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  SvgPicture.asset(
-                                                      imagesList[index]),
-                                                  Text(
-                                                    mediaName[index],
-                                                    style: Constant.simpleText,
+                              Column(
+                                children: [
+                                  SizedBox(
+                                    height: 8.h,
+                                    child: ListView.builder(
+                                      physics: const NeverScrollableScrollPhysics(),
+                                      padding: EdgeInsets.zero,
+                                      itemCount: imagesList.length,
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index) {
+                                        return Padding(
+                                          padding: EdgeInsets.symmetric(horizontal: 2.h),
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(0.8.h), // 10% of the height (8.h)
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                if (index == 2) {
+                                                  Get.to(() => GoToLive1());
+                                                }
+                                                if (index == 0) {
+                                                  imagePickerController.getImage().then((_) {
+                                                    // Trigger a UI update
+                                                    isImageSelected.value = true;
+                                                    imagePickerController.update();
+                                                  });
+                                                }
+                                              },
+                                              child: DottedBorder(
+                                                dashPattern: const [10, 10],
+                                                color: MyColor.blackBoldColor,
+                                                strokeWidth: 3,
+                                                borderType: BorderType.RRect,
+                                                radius: Radius.circular(1.8.h), // 10% of the height (8.h)
+                                                child: Padding(
+                                                  padding: EdgeInsets.symmetric(horizontal: 2.2.h, vertical: 1.h),
+                                                  child: Column(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Obx(() {
+                                                          if (index == 0 && imagePickerController.imagePath.isNotEmpty) {
+                                                            return Image.file(
+                                                              File(imagePickerController.imagePath.toString()),
+                                                              fit: BoxFit.cover,
+                                                            );
+                                                          } else {
+                                                            return SvgPicture.asset(imagesList[index]);
+                                                          }
+                                                        }),
+                                                      ),
+                                                      Text(
+                                                        mediaName[index],
+                                                        style: Constant.simpleText,
+                                                      ),
+                                                    ],
                                                   ),
-                                                ],
+                                                ),
                                               ),
                                             ),
                                           ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                  Obx(() {
+                                    if (isImageSelected.value && imagePickerController.imagePath.isNotEmpty) {
+                                      return Container(
+                                        height: 20.h, // Adjust height as needed
+                                        width: double.infinity,
+                                        margin: EdgeInsets.only(top: 2.h),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(color: MyColor.blackBoldColor, width: 2),
+                                          borderRadius: BorderRadius.circular(10),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                ),
+                                        child: Image.file(
+                                          File(imagePickerController.imagePath.toString()),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      );
+                                    } else {
+                                      return SizedBox.shrink(); // Hide the container if no image is selected
+                                    }
+                                  }),
+                                ],
                               ),
                               getVerticalSpace(2.h),
                               customTextField('Location', locationController),
@@ -241,22 +298,34 @@ class UploadPostsTabBar extends StatelessWidget {
                                     ),
                                   ),
                                   getHorizontalSpace(1.h),
-                                  GestureDetector(
-                                    onTap: () {},
+                                  authController.isLoading.value
+                                      ? const Center(child: CircularProgressIndicator(color: MyColor.blackBold))
+                                      : GestureDetector(
+                                    onTap: () {
+                                      authController.createPost(
+                                        thoughts: thoughtsController.text,
+                                        media: imagePickerController.imagePath.isNotEmpty
+                                            ? imagePickerController.imagePath.toString()
+                                            : "", // Add the actual media data
+                                        location: locationController.text,
+                                        taggedUsers: tagSomeoneController.text.isNotEmpty
+                                            ? tagSomeoneController.text.split(',')
+                                            : [], // Convert comma-separated string to list
+                                        tags: addTagController.text.isNotEmpty
+                                            ? addTagController.text.split(',')
+                                            : [], // Convert comma-separated string to list
+                                      );
+                                    },
                                     child: Container(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 7.h, vertical: 1.1.h),
+                                      padding: EdgeInsets.symmetric(horizontal: 7.h, vertical: 1.1.h),
                                       alignment: Alignment.center,
                                       decoration: BoxDecoration(
                                           color: MyColor.blackBoldColor,
-                                          borderRadius:
-                                              BorderRadius.circular(10.h),
-                                          border: Border.all(
-                                              color: MyColor.blackBoldColor)),
+                                          borderRadius: BorderRadius.circular(10.h),
+                                          border: Border.all(color: MyColor.blackBoldColor)),
                                       child: Text(
                                         'Done',
-                                        style: Constant.buttonText
-                                            .copyWith(color: Colors.white),
+                                        style: Constant.buttonText.copyWith(color: Colors.white),
                                       ),
                                     ),
                                   ),
@@ -430,6 +499,10 @@ class UploadPostsTabBar extends StatelessWidget {
                                 ),
                               ),
                               getVerticalSpace(4.h),
+                              customTextField('Location', locationController),
+                              getVerticalSpace(2.h),
+                              customTextField('Tag Someone', tagSomeoneController),
+                              getVerticalSpace(2.h),
                               customTextField(
                                   'Add Tags(Optional)', addTagController),
                               getVerticalSpace(3.h),

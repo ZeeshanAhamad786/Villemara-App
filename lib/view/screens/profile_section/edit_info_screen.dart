@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:villemara_app/controller/custom_widgets/constant.dart';
-import 'package:villemara_app/controller/custom_widgets/custom_text_form_feld.dart';
-import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
-import 'package:villemara_app/view/screens/authentication_screens/fingerprint_authentication.dart';
 
+import '../../../controller/utils/constant.dart';
+import '../../../controller/utils/custom_text_form_feld.dart';
+import '../../../controller/utils/customtextfield.dart';
 class EditInfoScreen extends StatelessWidget {
   const EditInfoScreen({super.key});
 

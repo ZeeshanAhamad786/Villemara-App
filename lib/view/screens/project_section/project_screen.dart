@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
 
-import '../../../controller/custom_widgets/constant.dart';
+import '../../../controller/utils/constant.dart';
+import '../../../controller/utils/customtextfield.dart';
 import '../../../model/project_model.dart';
 import '../projects_secton/create_new_project.dart';
 class ProjectScreen extends StatefulWidget {

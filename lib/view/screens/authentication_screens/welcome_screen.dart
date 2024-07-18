@@ -1,16 +1,30 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:villemara_app/controller/custom_widgets/constant.dart';
-import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
-import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'package:villemara_app/view/screens/authentication_screens/login_screen.dart';
 import 'package:villemara_app/view/screens/authentication_screens/signup_screen.dart';
 
-class WelcomeScreen extends StatelessWidget {
+import '../../../controller/utils/constant.dart';
+import '../../../controller/utils/customtextfield.dart';
+import '../../../controller/utils/my_color.dart';
+import '../../../controller/utils/shared_preferences.dart';
+
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +64,7 @@ class WelcomeScreen extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.offAll(() => const LoginScreen());
+                    Get.offAll(() =>  LoginScreen());
                   },
                   child: Container(
                     padding:

@@ -1,28 +1,45 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:villemara_app/controller/custom_widgets/constant.dart';
-import 'package:villemara_app/controller/custom_widgets/custom_text_form_feld.dart';
-import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
-import 'package:villemara_app/controller/custom_widgets/my_color.dart';
+import 'package:villemara_app/controller/api/auth_apis.dart';
+import 'package:villemara_app/controller/utils/validations.dart';
 import 'package:villemara_app/view/screens/authentication_screens/login_screen.dart';
-
+import '../../../controller/custom_button.dart';
+import '../../../controller/getx_controllers/auth_controller.dart';
+import '../../../controller/utils/constant.dart';
+import '../../../controller/utils/custom_text_form_feld.dart';
+import '../../../controller/utils/customtextfield.dart';
+import '../../../controller/utils/my_color.dart';
 import 'facerecognization_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
-   const SignUpScreen({super.key});
+  const SignUpScreen({super.key});
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  late AuthController authController;
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+ final TextEditingController emailController = TextEditingController();
+ final TextEditingController confirmEmailController = TextEditingController();
+ final TextEditingController passwordController = TextEditingController();
+ final TextEditingController confirmPasswordController = TextEditingController();
+ final TextEditingController companyHouseNoController = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    authController = Get.put(AuthController(context));
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+    Obx(() =>   Scaffold(
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 4.7.h),
         height: MediaQuery.of(context).size.height,
@@ -58,38 +75,45 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               getVerticalSpace(3.h),
               CustomTextFormField(
+                  controller: firstNameController,
                   hintText: 'First Name',
                   prefixIcon: SvgPicture.asset('assets/svg/nameicon.svg'),
                   readOnly: false),
               getVerticalSpace(2.h),
               CustomTextFormField(
+                  controller: lastNameController,
                   hintText: 'Last Name',
                   prefixIcon: SvgPicture.asset('assets/svg/nameicon.svg'),
                   readOnly: false),
               getVerticalSpace(2.h),
               CustomTextFormField(
+                  controller: emailController,
                   hintText: 'Email',
                   prefixIcon: SvgPicture.asset('assets/svg/emailicon.svg'),
                   readOnly: false),
               getVerticalSpace(2.h),
               CustomTextFormField(
+                  controller: confirmEmailController,
                   hintText: 'Confirm Email',
                   prefixIcon: SvgPicture.asset('assets/svg/emailicon.svg'),
                   readOnly: false),
               getVerticalSpace(2.h),
               CustomTextFormField(
+                  controller: passwordController,
                   hintText: 'Password',
                   prefixIcon: SvgPicture.asset('assets/svg/passwordicon.svg'),
                   suffixIcon: SvgPicture.asset('assets/svg/eye-off.svg'),
                   readOnly: false),
               getVerticalSpace(2.h),
               CustomTextFormField(
+                  controller: confirmPasswordController,
                   hintText: 'Confirm Password',
                   prefixIcon: SvgPicture.asset('assets/svg/passwordicon.svg'),
                   suffixIcon: SvgPicture.asset('assets/svg/eye-off.svg'),
                   readOnly: false),
               getVerticalSpace(2.h),
               CustomTextFormField(
+                  controller: companyHouseNoController,
                   hintText: 'Company House No.',
                   prefixIcon: SvgPicture.asset('assets/svg/company.svg'),
                   readOnly: false),
@@ -100,7 +124,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 },
                 child: Container(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 2.8.h, vertical: 1.3.h),
+                  EdgeInsets.symmetric(horizontal: 2.8.h, vertical: 1.3.h),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(36),
                     color: const Color(0xffF8F8F8),
@@ -117,19 +141,53 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             fontSize: 12.px),
                       ),
                       Spacer(),
-                      Icon(Icons.arrow_forward_ios_rounded,size: 14.px,)
+                      Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 14.px,
+                      )
                     ],
                   ),
                 ),
               ),
               getVerticalSpace(3.h),
-              GestureDetector(
+              authController.isLoading.value?const Center(child: CircularProgressIndicator(color: Colors.black,))
+                  : GestureDetector(
                 onTap: () {
-                  Get.to(() => const LoginScreen());
+                  if (Validations.handleSignUpScreenError(
+                      firstNameController: firstNameController,
+                      lastNameController: lastNameController,
+                      emailController: emailController,
+                      confirmEmailController: confirmEmailController,
+                      passwordController: passwordController,
+                      confirmPasswordController: confirmPasswordController,
+                      companyHouseNoController: companyHouseNoController)
+                      .isNotEmpty) {
+                    customScaffoldMessenger(context,
+                        Validations.handleSignUpScreenError(
+                            firstNameController: firstNameController,
+                            lastNameController: lastNameController,
+                            emailController: emailController,
+                            confirmEmailController: confirmEmailController,
+                            passwordController: passwordController,
+                            confirmPasswordController: confirmPasswordController,
+                            companyHouseNoController: companyHouseNoController));
+
+                  }else{
+                    authController.userRegistered(
+                        firstName: firstNameController.text,
+                        lastName: lastNameController.text,
+                        email: emailController.text,
+                        confirmEmail: confirmEmailController.text,
+                        password: passwordController.text,
+                        confirmPassword: confirmPasswordController.text,
+                        companyHouseNo: companyHouseNoController.text);
+                  }
+
+                  // Get.to(() => const LoginScreen());
                 },
                 child: Container(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 5.2.h, vertical: 1.1.h),
+                  EdgeInsets.symmetric(horizontal: 5.2.h, vertical: 1.1.h),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       color: MyColor.blackBoldColor,
@@ -144,32 +202,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
               getVerticalSpace(4.h),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => const LoginScreen());
+                  Get.to(() =>  LoginScreen());
                 },
                 child: RichText(
                     text: TextSpan(children: [
-                  TextSpan(
-                      text: 'Already have an account? ',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12.px,
-                          fontFamily: 'medium',
-                          color: const Color(0xff7A7A7A))),
-                  TextSpan(
-                      text: 'Log In',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12.px,
-                          fontFamily: 'bold',
-                          color: const Color(0xff1E1E1E)))
-                ])),
+                      TextSpan(
+                          text: 'Already have an account? ',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12.px,
+                              fontFamily: 'medium',
+                              color: const Color(0xff7A7A7A))),
+                      TextSpan(
+                          text: 'Log In',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12.px,
+                              fontFamily: 'bold',
+                              color: const Color(0xff1E1E1E)))
+                    ])),
               ),
               getVerticalSpace(3.h)
             ],
           ),
         ),
       ),
-    );
+    ));
   }
 
   // void showAlertDialog(BuildContext context) {

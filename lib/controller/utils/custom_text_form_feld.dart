@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 
 import 'constant.dart';
+import 'my_color.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String hintText;

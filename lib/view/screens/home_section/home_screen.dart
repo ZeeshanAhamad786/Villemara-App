@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
-import 'package:villemara_app/controller/custom_widgets/customtextfield.dart';
-import 'package:villemara_app/controller/custom_widgets/my_color.dart';
 import 'package:villemara_app/view/screens/home_section/notification_screen.dart';
 import 'package:villemara_app/view/screens/home_section/search_filter_screen.dart';
 import 'package:villemara_app/view/screens/home_section/story_screen.dart';
 import 'package:villemara_app/view/screens/posts/post_screen.dart';
-import '../../../controller/custom_widgets/constant.dart';
+import '../../../controller/utils/constant.dart';
+import '../../../controller/utils/customtextfield.dart';
+import '../../../controller/utils/my_color.dart';
 import '../add_post_section/add_story_screen.dart';
 import '../posts/listings.dart';
 class HomeScreen extends StatefulWidget {
